@@ -19,12 +19,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -37,8 +40,8 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -56,6 +59,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -103,20 +107,27 @@ private fun Root() {
     val ctx = LocalContext.current
     val vault = remember { Vault(ctx) }
     var s by remember { mutableStateOf(vault.load()) }
-    var tab by remember { mutableIntStateOf(0) }
+    var edit by remember { mutableStateOf(s.accounts) }
+    var shown by remember { mutableStateOf(setOf<String>()) }
+    val pager = rememberPagerState { 3 }
+    val scope = rememberCoroutineScope()
     fun persist(n: Settings) { s = n; vault.save(n) }
+    fun go(i: Int) { scope.launch { pager.animateScrollToPage(i) } }
 
     Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
         Text(stringResource(R.string.app_name), fontSize = 26.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 16.dp, top = 8.dp, end = 16.dp))
-        TabRow(tab, containerColor = Color.Transparent) {
-            Tab(tab == 0, { tab = 0 }, text = { Text(stringResource(R.string.tab_home)) })
-            Tab(tab == 1, { tab = 1 }, text = { Text(stringResource(R.string.tab_accounts)) })
-            Tab(tab == 2, { tab = 2 }, text = { Text(stringResource(R.string.tab_log)) })
+        TabRow(pager.currentPage, containerColor = Color.Transparent) {
+            Tab(pager.currentPage == 0, { go(0) }, text = { Text(stringResource(R.string.tab_home)) })
+            Tab(pager.currentPage == 1, { go(1) }, text = { Text(stringResource(R.string.tab_accounts)) })
+            Tab(pager.currentPage == 2, { go(2) }, text = { Text(stringResource(R.string.tab_log)) })
         }
-        when (tab) {
-            0 -> HomeTab(s, ::persist) { tab = 1 }
-            1 -> AccountsTab(s, ::persist)
-            else -> LogTab()
+        // Swiping the page changes the tab; every page keeps its own scroll.
+        HorizontalPager(pager, Modifier.weight(1f).fillMaxWidth()) { page ->
+            when (page) {
+                0 -> HomeTab(s, ::persist) { go(1) }
+                1 -> AccountsTab(s, edit, { edit = it }, shown, { shown = it }, ::persist)
+                else -> LogTab()
+            }
         }
     }
 }
@@ -133,9 +144,26 @@ private fun HomeTab(s: Settings, persist: (Settings) -> Unit, goAccounts: () -> 
     val askNotif = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { }
 
     Column(Modifier.verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        Card(Modifier.fillMaxWidth()) {
+        val tint = when (st.line) {
+            RunState.R_DONE, RunState.R_PREVIEW_DONE -> Color(0xFFDDF3E8)
+            RunState.R_LOGIN, RunState.R_CERT, RunState.R_NET, RunState.R_ODD, RunState.R_SELF, RunState.R_POOR, RunState.R_OVER, RunState.R_FAILED -> Color(0xFFFBE3E1)
+            else -> MaterialTheme.colorScheme.surfaceVariant
+        }
+        Card(Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = tint)) {
             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(stringResource(statusText(st.line)), fontSize = 18.sp, textAlign = TextAlign.Center)
+                if (!st.running && st.wouldReserve.isNotEmpty()) {
+                    Text(stringResource(R.string.would_reserve), fontWeight = FontWeight.SemiBold)
+                    st.wouldReserve.forEach { Text(it, fontSize = 14.sp, textAlign = TextAlign.Center) }
+                    Button(
+                        onClick = {
+                            persist(s.copy(preview = false))
+                            if (Build.VERSION.SDK_INT >= 33) askNotif.launch(Manifest.permission.POST_NOTIFICATIONS)
+                            ReserveService.start(ctx)
+                        },
+                        modifier = Modifier.fillMaxWidth().height(52.dp),
+                    ) { Text(stringResource(R.string.reserve_now)) }
+                }
                 st.credit?.let { Text(stringResource(R.string.credit, "%,d".format(it)), color = Color.Gray) }
                 if (st.running) {
                     Button(
@@ -185,13 +213,14 @@ private fun HomeTab(s: Settings, persist: (Settings) -> Unit, goAccounts: () -> 
 }
 
 @Composable
-private fun AccountsTab(s: Settings, persist: (Settings) -> Unit) {
+private fun AccountsTab(
+    s: Settings, edit: List<Account>, setEdit: (List<Account>) -> Unit,
+    shown: Set<String>, setShown: (Set<String>) -> Unit, persist: (Settings) -> Unit,
+) {
     val st by RunState.state.collectAsState()
-    var edit by remember { mutableStateOf(s.accounts) }
-    val shown = remember { mutableStateOf(setOf<String>()) }
     val dirty = edit != s.accounts
 
-    fun change(id: String, f: (Account) -> Account) { edit = edit.map { if (it.id == id) f(it) else it } }
+    fun change(id: String, f: (Account) -> Account) { setEdit(edit.map { if (it.id == id) f(it) else it }) }
 
     Column(Modifier.verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Text(stringResource(R.string.accounts_hint), fontSize = 13.sp, color = Color.Gray)
@@ -219,21 +248,25 @@ private fun AccountsTab(s: Settings, persist: (Settings) -> Unit) {
                     OutlinedTextField(
                         a.password, { v -> change(a.id) { it.copy(password = v) } }, Modifier.fillMaxWidth(), singleLine = true,
                         label = { Text(stringResource(R.string.password)) },
-                        visualTransformation = if (a.id in shown.value) VisualTransformation.None else PasswordVisualTransformation(),
+                        visualTransformation = if (a.id in shown) VisualTransformation.None else PasswordVisualTransformation(),
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password), enabled = !st.running,
                     )
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                        TextButton({ shown.value = if (a.id in shown.value) shown.value - a.id else shown.value + a.id }) {
-                            Text(stringResource(if (a.id in shown.value) R.string.hide else R.string.show))
+                        TextButton({ setShown(if (a.id in shown) shown - a.id else shown + a.id) }) {
+                            Text(stringResource(if (a.id in shown) R.string.hide else R.string.show))
                         }
-                        TextButton({ edit = edit.filter { it.id != a.id } }, enabled = !st.running) { Text(stringResource(R.string.remove)) }
+                        TextButton({ setEdit(edit.filter { it.id != a.id }) }, enabled = !st.running) { Text(stringResource(R.string.remove)) }
                     }
                 }
             }
         }
-        OutlinedButton({ edit = edit + Account() }, Modifier.fillMaxWidth(), enabled = !st.running && edit.size < 8) { Text(stringResource(R.string.add_account)) }
+        OutlinedButton({ setEdit(edit + Account()) }, Modifier.fillMaxWidth(), enabled = !st.running && edit.size < 8) { Text(stringResource(R.string.add_account)) }
         Button(
-            onClick = { persist(s.copy(accounts = edit.map { it.copy(username = it.username.trim(), label = it.label.trim()) }.also { edit = it })) },
+            onClick = {
+                val clean = edit.map { it.copy(username = it.username.trim(), label = it.label.trim()) }
+                setEdit(clean)
+                persist(s.copy(accounts = clean))
+            },
             enabled = dirty && !st.running,
             modifier = Modifier.fillMaxWidth().height(52.dp),
         ) { Text(stringResource(R.string.save)) }

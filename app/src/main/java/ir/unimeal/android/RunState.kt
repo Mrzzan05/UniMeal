@@ -16,6 +16,8 @@ object RunState {
         val credit: Long? = null,
         /** Account id -> last status code. */
         val acc: Map<String, Int> = emptyMap(),
+        /** Preview result: what a real run would reserve. */
+        val wouldReserve: List<String> = emptyList(),
     )
 
     const val R_IDLE = 0

@@ -67,6 +67,8 @@
     <string name="n_sold_out">موجود نبود (تمام شده یا بسته): %1$s</string>
     <string name="n_timeout_title">UniMeal: متوقف شد</string>
     <string name="n_timeout_text">برای صرفه‌جویی باتری بعد از ۱۲ ساعت متوقف شد. در صورت نیاز دوباره شروع کنید.</string>
+    <string name="would_reserve">این‌ها رزرو می‌شد:</string>
+    <string name="reserve_now">پیش‌نمایش را خاموش کن و همین‌ها را رزرو کن</string>
     <string name="tab_home">خانه</string>
     <string name="tab_accounts">حساب‌ها</string>
     <string name="tab_log">گزارش</string>

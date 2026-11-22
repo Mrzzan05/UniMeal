@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1
+- Swipe left/right to change tabs.
+- After a preview, Home lists what would be reserved, with one button to turn preview off and reserve those now.
+- Status card is coloured (green = ok, red = needs attention).
+
 ## 0.2.0
 - Fix: SAMAD often opens on another self after sign-in; UniMeal now switches to تاک دامپزشکی itself (like the drop-down on the website) instead of stopping.
 - Several accounts in their own tab (yours first, then friends'); saved only when you press Save.

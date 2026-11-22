@@ -67,6 +67,8 @@
     <string name="n_sold_out">Not available (sold out or closed): %1$s</string>
     <string name="n_timeout_title">UniMeal: stopped</string>
     <string name="n_timeout_text">Stopped after 12 hours to save battery. Press start again if needed.</string>
+    <string name="would_reserve">Would reserve:</string>
+    <string name="reserve_now">Turn off preview and reserve these now</string>
     <string name="tab_home">Home</string>
     <string name="tab_accounts">Accounts</string>
     <string name="tab_log">Log</string>

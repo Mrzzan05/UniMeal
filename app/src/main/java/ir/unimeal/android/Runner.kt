@@ -128,6 +128,7 @@ class Runner(
                 if (plan.toReserve.isNotEmpty()) {
                     if (preview) {
                         would += plan.toReserve.map { it.first.title + " — " + it.second.label }
+                        log("preview: would reserve " + plan.toReserve.joinToString("; ") { it.first.title })
                     } else {
                         val picked = plan.toReserve.map { it.second }
                         log("reserving ${picked.size}")

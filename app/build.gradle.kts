@@ -12,8 +12,8 @@ android {
         applicationId = "ir.unimeal.android"
         minSdk = 26
         targetSdk = 35
-        versionCode = 2
-        versionName = "0.2.0"
+        versionCode = 3
+        versionName = "0.2.1"
 
         // Drop translations of libraries we don't ship a UI for (the app itself is en + fa).
         @Suppress("DEPRECATION")

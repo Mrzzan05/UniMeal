@@ -46,7 +46,7 @@ class ReserveService : Service() {
         if (s.usableAccounts.isEmpty() || s.meals.isEmpty()) { stopRun(RunState.R_STOPPED); return START_NOT_STICKY }
         val pm = getSystemService(PowerManager::class.java)
         wake = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "UniMeal:run").apply { acquire(MAX_RUN_MS) }
-        RunState.set { it.copy(running = true, line = RunState.R_CHECKING, acc = emptyMap()) }
+        RunState.set { it.copy(running = true, line = RunState.R_CHECKING, acc = emptyMap(), wouldReserve = emptyList()) }
         RunState.log(getString(R.string.log_start, s.usableAccounts.size, if (s.preview) "preview" else "real"))
         job = scope.launch { loop(s) }
         return START_NOT_STICKY
@@ -119,6 +119,8 @@ class ReserveService : Service() {
                     RunState.log("$tag: " + getString(R.string.log_finished))
                 } else if (v == Verdict.PREVIEW_DONE) {
                     overall = RunState.R_PREVIEW_DONE
+                    val lines = o.wouldReserve.map { w -> who(sl) + w }
+                    RunState.set { st -> st.copy(wouldReserve = st.wouldReserve + lines) }
                     notes += who(sl) + if (o.wouldReserve.isEmpty()) getString(R.string.n_preview_none) else o.wouldReserve.joinToString("\n")
                 } else {
                     if (o.unavailable.isNotEmpty()) { notes += who(sl) + getString(R.string.n_sold_out, o.unavailable.joinToString("، ")); site = true }
