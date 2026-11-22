@@ -1,0 +1,2907 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+<script type="text/javascript">
+    var _csrf_token_headers =  {'X-CSRF-TOKEN' : '00000000-0000-0000-0000-000000000000'};
+    function addUniqueParam(jForm) {
+        jForm.action = jForm.action;
+    }
+
+</script>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <!--[if gte IE 9]>
+    <style type="text/css">
+        .gradient {
+            filter: none;
+        }
+    </style>
+    <![endif]-->
+
+            <!-- HTTP 1.1 -->
+        <meta http-equiv="Cache-Control" content="no-store"/>
+        <!-- HTTP 1.0 -->
+        <meta http-equiv="Pragma" content="no-cache"/>
+        <!-- Prevents caching at the Proxy Server -->
+        <meta http-equiv="Expires" content="-1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <!--<meta name="generator" content="Dadekavan Ltd" />--> <!-- leave this for stats please -->
+
+    <title>سماد- سامانه مدیریت امور دانشجویی&nbsp;<>&nbsp;فرم رزرو غذا</title>
+
+    
+
+
+
+
+<script type="text/javascript" src="/static/js/base/jquery-3.7.1.min.js">
+</script>
+<script type="text/javascript" src="/static/js/base/jquery-ui.min.js?s2j=5.0.7">
+</script>
+<script type="text/javascript" src="/static/i18n/datepicker-fa.min.js?s2j=5.0.7">
+</script>
+<script type="text/javascript" src="/static/js/plugins/jquery.form.min.js?s2j=5.0.7">
+</script>
+<script type="text/javascript" src="/static/js/plugins/jquery.subscribe.min.js?s2j=5.0.7">
+</script>
+
+<script type="text/javascript" src="/static/js/struts2/jquery.struts2.min.js?s2j=5.0.7">
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        jQuery.struts2_jquery.version = "5.0.7";
+        jQuery.struts2_jquery.loadAtOnce = true;
+        jQuery.scriptPath = "/static/";
+        jQuery.struts2_jquery.local = "fa";
+        jQuery.struts2_jquery.gridLocal = "fa";
+        jQuery.struts2_jquery.timeLocal = "fa";
+        jQuery.struts2_jquery.datatablesLocal = "fa";
+        jQuery.ajaxSettings.traditional = true;
+
+        jQuery.ajaxSetup({
+            cache: false
+        });
+
+        jQuery.struts2_jquery.require("js/struts2/jquery.ui.struts2.min.js?s2j=5.0.7");
+
+    });
+</script>
+
+            <link
+                    id="jquery_theme_link"
+                    rel="stylesheet"
+                    href="/static/themes/cupertino/jquery-ui.css?s2j=5.0.7"
+                    type="text/css"
+                    />
+
+
+    <!-- Menu System -->
+
+    
+    
+        
+        <title>سماد(سامانه مدیریت امور دانشجویی)</title>
+        
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/styles/newui/favicon_v0.16/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/styles/newui/favicon_v0.16/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/styles/newui/favicon_v0.16/favicon-16x16.png">
+    <script type='text/javascript' src='/scripts/html.js'></script>
+    <!-- End of Menu System Config -->
+    <link rel="stylesheet" type="text/css" media="all"
+          href="/styles/farsi-fuse/theme.css">
+    <link rel="stylesheet" type="text/css" media="print"
+          href="/styles/farsi-fuse/print.css">
+    <link rel="stylesheet" href="/styles/newui/newui.css">
+    <link rel="stylesheet" href="/styles/newui/newui-master.css">
+    <link rel="stylesheet" href="/styles/newui/fonts.css">
+    <link rel="stylesheet" href="/styles/newui/js/webui-popover-master/final/jquery.webui-popover.min.css">
+
+
+    <script type="text/javascript" src="/scripts/global.js"></script>
+    <script type="text/javascript" src="/scripts/dateConvertor_fa.js"></script>
+    <script type="text/javascript" src="/styles/fontawesome/js/all.min.js"></script>
+
+    <script type="text/javascript">
+
+        function noErrorCustom() {
+            return true;
+        }
+
+        if (getInternetExplorerVersion() > -1)
+            window.onerror = noErrorCustom;
+
+        $(function () {
+            if ($(".ui-notification-container")) {
+                $(".ui-notification-container").notification();
+
+                if (window.location.href.lastIndexOf("/index/index.rose") > -1) {
+                    $(".ui-notification-container").notification("create", {
+                            title: "",
+                            content: "آخرین تلاش (موفق 1405/09/01 14:45:52 192.168.197.236)" +
+                                "<br/>آخرین تلاش ناموفق (1405/07/02 10:59:47 5.122.253.251)" +
+                                "<br/>جمعا (0) ورود ناموفق بعد از ورود موفق قبلی"
+                        },
+                        {
+                            duration: 30000,
+                            show: {
+                                effect: 'bounce',
+                                options: {},
+                                speed: 2000,
+                                callback: function () {
+                                }
+                            },
+                            hide: {
+                                effect: 'clip',
+                                options: {},
+                                speed: 1000,
+                                callback: function () {
+                                }
+                            }
+                        });
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        function noErrorCustom() {
+            return true;
+        }
+
+        if (getInternetExplorerVersion() > -1)
+            window.onerror = noErrorCustom;
+    </script>
+
+    <!-- HTTP 1.1 -->
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <!-- HTTP 1.0 -->
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <!-- Prevents caching at the Proxy Server -->
+    <meta http-equiv="Expires" content="-1"/>
+
+
+    <script language="JavaScript">
+        
+        var h =14;
+        var m =53;
+        var s =23;
+
+        var gizmo;
+
+        function stopClock() {
+            clearTimeout(gizmo);
+        }
+
+        function yourClock() {
+            var time = " ";
+            s = parseInt(s) + 1;
+            if (s == 60) {
+                s = 0;
+                m = parseInt(m) + 1;
+                if (m == 60) {
+                    m = 0;
+                    h = parseInt(h) + 1;
+                    if (h == 24) {
+                        h = 0;
+                    }
+                }
+            }
+            time += h + ":" + m + ":" + s;
+            document.getElementById("the_time").innerText = time;
+            gizmo = setTimeout("yourClock()", 1000);
+        }
+    </script>
+    <script type="text/javascript">
+        function click_loading() {
+            document.getElementById("loading").style.display = "block";
+        }
+
+        function show_loading(show) {
+            if (show) {
+                document.getElementById("loading").style.display = "block";
+            } else {
+                document.getElementById("loading").style.display = "none";
+            }
+        }
+    </script>
+
+    <style type="text/css">
+        .tooltip {
+            display: none;
+            position: absolute;
+            border: 1px solid #333;
+            background-color: #161616;
+            border-radius: 5px;
+            padding: 10px;
+            color: #fff;
+            font-size: 12px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            // Tooltip only Text
+            jQuery('.masterTooltip').hover(function () {
+                // Hover over code
+                var title = jQuery(this).attr('title');
+                jQuery(this).data('tipText', title).removeAttr('title');
+                jQuery('<p class="tooltip"></p>')
+                    .text(title)
+                    .appendTo('body')
+                    .fadeIn('slow');
+            }, function () {
+                // Hover out code
+                jQuery(this).attr('title', jQuery(this).data('tipText'));
+                jQuery('.tooltip').remove();
+            }).mousemove(function (e) {
+                var mousex = e.pageX + 20; //Get X coordinates
+                var mousey = e.pageY + 10; //Get Y coordinates
+                jQuery('.tooltip')
+                    .css({top: mousey, left: mousex})
+            });
+        });
+
+        function postChangeUserForm(params) {
+            const form = document.createElement('form');
+            form.method = "POST";
+            form.action = "/login/impersonate?username=" + params;
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+</head>
+
+    <meta name="heading" content="فرم رزرو غذا"/>
+    <meta name="menu" content="NurtureUserMenu"/>
+
+    <script type="text/javascript">var context_path = "";</script>
+    <script type='text/javascript' src='/scripts/dwr/dwr-service.js'></script>
+    <script type='text/javascript' src='/scripts/dwr/engine.js'></script>
+    <script type='text/javascript' src='/scripts/dwr/util.js'></script>
+
+    <link rel="stylesheet" href="/scripts/tooltip/jquery.tooltip.css"/>
+    <script src="/scripts/tooltip/jquery.tooltip.min.js" type="text/javascript"></script>
+    
+    
+    
+    
+    
+
+    <script type="text/javascript">
+        var reservationChanged = false;
+        var weekValidTotalCount = parseInt(30);
+        var weekSavedTotalCount = parseInt(10);
+        var monthValidTotalCount = parseInt(120);
+        var monthSavedTotalCount1 = parseInt(40);
+        var monthSavedTotalCount2 = parseInt(8);
+        var doEnableDisableNumberForFreeFood = false;
+        var weekValidMealTotalCounts = new Array(
+            
+            {
+                mealType: '1',
+                totalCount: '20',
+                savedCount: parseInt('5'),
+                monthCount: '',
+                savedMonthCount: parseInt('')
+            },
+            
+            {
+                mealType: '2',
+                totalCount: '20',
+                savedCount: parseInt('0'),
+                monthCount: '',
+                savedMonthCount: parseInt('')
+            },
+            
+            {
+                mealType: '3',
+                totalCount: '10',
+                savedCount: parseInt('5'),
+                monthCount: '',
+                savedMonthCount: parseInt('')
+            },
+            
+            {mealType: null, totalCount: null, savedCount: null, monthCount: null, savedMonthCount: null});
+
+        var mealtypeSelfWeekValidTotalCount = new Array(
+            
+            {mealType: null, totalCount: null, savedCount: null});
+
+        var monthValidMealTotalCounts1 = new Array(
+            
+            {
+                mealType: '1',
+                totalCount: '',
+                savedCount: parseInt(''),
+                monthCount: '60',
+                savedMonthCount: parseInt('20')
+            },
+            
+            {
+                mealType: '2',
+                totalCount: '',
+                savedCount: parseInt(''),
+                monthCount: '60',
+                savedMonthCount: parseInt('0')
+            },
+            
+            {
+                mealType: '3',
+                totalCount: '',
+                savedCount: parseInt(''),
+                monthCount: '40',
+                savedMonthCount: parseInt('20')
+            },
+            
+            {mealType: null, totalCount: null, savedCount: null, monthCount: null, savedMonthCount: null});
+
+        var monthValidMealTotalCounts2 = new Array(
+            
+            {
+                mealType: '1',
+                totalCount: '',
+                savedCount: parseInt(''),
+                monthCount: '60',
+                savedMonthCount: parseInt('4')
+            },
+            
+            {
+                mealType: '2',
+                totalCount: '',
+                savedCount: parseInt(''),
+                monthCount: '60',
+                savedMonthCount: parseInt('0')
+            },
+            
+            {
+                mealType: '3',
+                totalCount: '',
+                savedCount: parseInt(''),
+                monthCount: '40',
+                savedMonthCount: parseInt('4')
+            },
+            
+            {mealType: null, totalCount: null, savedCount: null, monthCount: null, savedMonthCount: null});
+
+        function setPageWidth() {
+            var tdWidth = window.innerWidth;
+            try {
+                document.getElementById('pageTD').width = tdWidth;
+            } catch (e) {
+            }
+            var combos = document.getElementsByTagName('select');
+            for (var i = 0; i < combos.length; i++) {
+                if (combos[i].name.indexOf('selectedCount') != -1) {
+                    var checkBoxId = combos[i].id.replace('selectedCount', 'selected');
+                    combos[i].disabled = document.getElementById(checkBoxId).disabled || !document.getElementById(checkBoxId).checked;
+                }
+            }
+        }
+
+        function enableDisableNumberForFreeFood(ctlId, numberComboId, fee, lastAmountId, foodTypeCheckBoxesArray, foodTypeCombosArray, validTotalCount, mealTypeId, reservedCount, reservePrice, monthIndex) {
+            if (!doEnableDisableNumberForFreeFood) {
+                return;
+            }
+            var ctl = document.getElementById(ctlId);
+            enableDisableNumber(ctl, numberComboId, fee, lastAmountId, foodTypeCheckBoxesArray, foodTypeCombosArray, validTotalCount, mealTypeId, reservedCount, reservePrice, monthIndex)
+        }
+
+        function enableDisableNumber(ctl, numberComboId, fee, lastAmountId, foodTypeCheckBoxesArray, foodTypeCombosArray, validTotalCount, mealTypeId, reservedCount, reservePrice, monthIndex) {
+            reservationChanged = true;
+            document.getElementById(numberComboId).disabled = !ctl.checked;
+            var mealTypeSavedCount = getMealTypeSaveCount(mealTypeId);
+            var mealTypeSelfSavedCount = getMealTypeSelfSaveCount(mealTypeId);
+            if (ctl.checked) {
+                if (checkTotalCountWithValidTotalCount(ctl, foodTypeCheckBoxesArray, foodTypeCombosArray, validTotalCount)) {
+                    alert('مجموع تعداد غذاهای انتخاب شده بیشتر از تعداد مجاز گروه شما در این وعده میباشد.');
+                    ctl.checked = false;
+                    document.getElementById(numberComboId).disabled = !ctl.checked;
+                    return;
+                }
+                var addedAmount = parseInt(document.getElementById(numberComboId).value);
+
+                if (checkMealTypeWeekValidCount(mealTypeId, addedAmount)) {
+                    alert('مجموع تعداد غذاهای انتخاب شده بیشتر از تعداد مجاز گروه شما در این وعده در هفته میباشد.');
+                    ctl.checked = false;
+                    document.getElementById(numberComboId).disabled = !ctl.checked;
+                    return;
+                }
+
+                if (checkMealTypeSelfWeekValidCount(mealTypeId, addedAmount)) {
+                    alert('مجموع تعداد غذاهای انتخاب شده بیشتر از تعداد مجاز گروه شما در این وعده در این سلف در هفته میباشد.');
+                    ctl.checked = false;
+                    document.getElementById(numberComboId).disabled = !ctl.checked;
+                    return;
+                }
+
+                if (checkMealTypeMonthValidCount(mealTypeId, addedAmount, monthIndex)) {
+                    alert('مجموع تعداد غذاهای انتخاب شده بیشتر از تعداد مجاز گروه شما در این وعده در ماه میباشد.');
+                    ctl.checked = false;
+                    document.getElementById(numberComboId).disabled = !ctl.checked;
+                    return;
+                }
+
+                if (checkWeekValidCount(addedAmount)) {
+                    alert('مجموع تعداد غذاهای انتخاب شده بیشتر از تعداد مجاز گروه شما در کل هفته می باشد.');
+                    ctl.checked = false;
+                    document.getElementById(numberComboId).disabled = !ctl.checked;
+                    return;
+                }
+                if (checkMonthValidCount(addedAmount, monthIndex)) {
+                    alert('مجموع تعداد غذاهای انتخاب شده بیشتر از تعداد مجاز گروه شما در کل ماه می باشد.');
+                    ctl.checked = false;
+                    document.getElementById(numberComboId).disabled = !ctl.checked;
+                    return;
+                }
+                var selectedCountCombo = parseInt(document.getElementById(numberComboId).value);
+                var freeRestaurant = document.getElementById("freeRestaurant").value == 'true';
+
+                if (!freeRestaurant && reservedCount != null && reservePrice != null) {
+                    if (reservedCount >= selectedCountCombo) {
+                        decreaseCredit(reservePrice * selectedCountCombo);
+                    } else {
+                        decreaseCredit(reservePrice * (reservedCount));
+                        decreaseCredit(fee * (selectedCountCombo - reservedCount));
+                    }
+                } else if (!freeRestaurant) {
+                    decreaseCredit(selectedCountCombo * fee);
+                }
+                document.getElementById(lastAmountId).value = document.getElementById(numberComboId).value;
+                weekSavedTotalCount += parseInt(addedAmount);
+                if (monthIndex == 1) {
+                    monthSavedTotalCount1 += parseInt(addedAmount);
+                }
+                if (monthIndex == 2) {
+                    monthSavedTotalCount2 += parseInt(addedAmount);
+                }
+                updateMealTypeSaveCount(mealTypeId, mealTypeSavedCount + addedAmount);
+                if (mealTypeSelfSavedCount != null) {
+                    updateMealTypeSelfSaveCount(mealTypeId, mealTypeSelfSavedCount + addedAmount);
+                }
+                updateMealTypeMonthSaveCount(mealTypeId, mealTypeSavedCount + addedAmount, monthIndex);
+
+            } else {
+                var selectedCountCombo = parseInt(document.getElementById(numberComboId).value);
+                var freeRestaurant = document.getElementById("freeRestaurant").value == 'true';
+
+                if (!freeRestaurant && reservedCount != null && reservePrice != null) {
+                    if (reservedCount >= selectedCountCombo) {
+                        increaseCredit(reservePrice * selectedCountCombo);
+                    } else {
+                        increaseCredit(reservePrice * (reservedCount));
+                        increaseCredit(fee * (selectedCountCombo - reservedCount));
+                    }
+                } else if (!freeRestaurant) {
+                    increaseCredit(selectedCountCombo * fee);
+                }
+
+                weekSavedTotalCount -= document.getElementById(numberComboId).value;
+                if (monthIndex == 1) {
+                    monthSavedTotalCount1 -= document.getElementById(numberComboId).value;
+                }
+                if (monthIndex == 2) {
+                    monthSavedTotalCount2 -= document.getElementById(numberComboId).value;
+                }
+                updateMealTypeSaveCount(mealTypeId, mealTypeSavedCount - document.getElementById(numberComboId).value);
+                if (mealTypeSelfSavedCount != null) {
+                    updateMealTypeSelfSaveCount(mealTypeId, mealTypeSelfSavedCount - document.getElementById(numberComboId).value);
+                }
+                updateMealTypeMonthSaveCount(mealTypeId, mealTypeSavedCount - document.getElementById(numberComboId).value, monthIndex);
+            }
+
+            g_selectFoodTypeDirectly(ctl);
+        }
+
+        function checkMealTypeWeekValidCount(mealTypeId, addedAmount) {
+            var mealTypeValidCount = getMealTypeValidCount(mealTypeId);
+            var mealTypeSavedCount = getMealTypeSaveCount(mealTypeId);
+            if (mealTypeValidCount != null && (mealTypeSavedCount + addedAmount) > mealTypeValidCount) {
+                return true;
+            }
+            return false;
+        }
+
+        function checkMealTypeSelfWeekValidCount(mealTypeId, addedAmount) {
+            var mealTypeValidCount = getMealtypeSelfWeekValidTotalCount(mealTypeId);
+            var mealTypeSavedCount = getMealTypeSelfSaveCount(mealTypeId);
+            if (mealTypeValidCount != null && (mealTypeSavedCount + addedAmount) > mealTypeValidCount) {
+                return true;
+            }
+            return false;
+        }
+
+        function checkMealTypeMonthValidCount(mealTypeId, addedAmount, monthIndex) {
+            var mealTypeMonthValidCount = getMealTypeMonthValidCount(mealTypeId, monthIndex);
+            var mealTypeMonthSavedCount = getMealTypeMonthSaveCount(mealTypeId, monthIndex);
+            if (mealTypeMonthValidCount != null && (mealTypeMonthSavedCount + addedAmount) > mealTypeMonthValidCount) {
+                return true;
+            }
+            return false;
+        }
+
+        function getMealTypeMonthValidCount(mealTypeId, monthIndex) {
+            if (monthIndex == 1) {
+                for (var i = 0; i < monthValidMealTotalCounts1.length; i++) {
+                    if (monthValidMealTotalCounts1[i].mealType == mealTypeId) {
+                        return monthValidMealTotalCounts1[i].monthCount;
+                    }
+                }
+            }
+            if (monthIndex == 2) {
+                for (var i = 0; i < monthValidMealTotalCounts2.length; i++) {
+                    if (monthValidMealTotalCounts2[i].mealType == mealTypeId) {
+                        return monthValidMealTotalCounts2[i].monthCount;
+                    }
+                }
+            }
+            return null;
+        }
+
+        function getMealTypeMonthSaveCount(mealTypeId, monthIndex) {
+            if (monthIndex == 1) {
+                for (var i = 0; i < monthValidMealTotalCounts1.length; i++) {
+                    if (monthValidMealTotalCounts1[i].mealType == mealTypeId) {
+                        return monthValidMealTotalCounts1[i].savedMonthCount;
+                    }
+                }
+            }
+            if (monthIndex == 2) {
+                for (var i = 0; i < monthValidMealTotalCounts2.length; i++) {
+                    if (monthValidMealTotalCounts2[i].mealType == mealTypeId) {
+                        return monthValidMealTotalCounts2[i].savedMonthCount;
+                    }
+                }
+            }
+            return null;
+        }
+
+        function getMealTypeValidCount(mealTypeId) {
+            for (var i = 0; i < weekValidMealTotalCounts.length; i++) {
+                if (weekValidMealTotalCounts[i].mealType == mealTypeId) {
+                    return weekValidMealTotalCounts[i].totalCount;
+                }
+            }
+            return null;
+        }
+
+        function getMealTypeSaveCount(mealTypeId) {
+            for (var i = 0; i < weekValidMealTotalCounts.length; i++) {
+                if (weekValidMealTotalCounts[i].mealType == mealTypeId) {
+                    return weekValidMealTotalCounts[i].savedCount;
+                }
+            }
+            return null;
+        }
+
+        function updateMealTypeSaveCount(mealTypeId, newMealTypeSavedCount) {
+            for (var i = 0; i < weekValidMealTotalCounts.length; i++) {
+                if (weekValidMealTotalCounts[i].mealType == mealTypeId) {
+                    weekValidMealTotalCounts[i].savedCount = newMealTypeSavedCount;
+                    return;
+                }
+            }
+        }
+
+        function getMealtypeSelfWeekValidTotalCount(mealTypeId) {
+            for (var i = 0; i < mealtypeSelfWeekValidTotalCount.length; i++) {
+                if (mealtypeSelfWeekValidTotalCount[i].mealType == mealTypeId) {
+                    return mealtypeSelfWeekValidTotalCount[i].totalCount;
+                }
+            }
+            return null;
+        }
+
+        function getMealTypeSelfSaveCount(mealTypeId) {
+            for (var i = 0; i < mealtypeSelfWeekValidTotalCount.length; i++) {
+                if (mealtypeSelfWeekValidTotalCount[i].mealType == mealTypeId) {
+                    return mealtypeSelfWeekValidTotalCount[i].savedCount;
+                }
+            }
+            return null;
+        }
+
+        function updateMealTypeSelfSaveCount(mealTypeId, newMealTypeSavedCount) {
+            for (var i = 0; i < mealtypeSelfWeekValidTotalCount.length; i++) {
+                if (mealtypeSelfWeekValidTotalCount[i].mealType == mealTypeId) {
+                    mealtypeSelfWeekValidTotalCount[i].savedCount = newMealTypeSavedCount;
+                    return;
+                }
+            }
+        }
+
+        function updateMealTypeMonthSaveCount(mealTypeId, newMealTypeSavedCount, monthIndex) {
+            if (monthIndex == 1) {
+                for (var i = 0; i < monthValidMealTotalCounts1.length; i++) {
+                    if (monthValidMealTotalCounts1[i].mealType == mealTypeId) {
+                        monthValidMealTotalCounts1[i].savedMonthCount = newMealTypeSavedCount;
+                        return;
+                    }
+                }
+            } else {
+                for (var i = 0; i < monthValidMealTotalCounts2.length; i++) {
+                    if (monthValidMealTotalCounts2[i].mealType == mealTypeId) {
+                        monthValidMealTotalCounts2[i].savedMonthCount = newMealTypeSavedCount;
+                        return;
+                    }
+                }
+            }
+        }
+
+        function checkWeekValidCount(addedAmount) {
+            if ((weekSavedTotalCount + addedAmount) > weekValidTotalCount) {
+                return true;
+            }
+            return false;
+        }
+
+        function checkMonthValidCount(addedAmount, monthIndex) {
+//    alert('monthIndex='+monthIndex+',monthSavedTotalCount1='+monthSavedTotalCount1+',addedAmount='+addedAmount+',monthValidTotalCount='+monthValidTotalCount);
+            if (monthIndex == 1) {
+                if ((monthSavedTotalCount1 + addedAmount) > monthValidTotalCount) {
+                    return true;
+                }
+            } else {
+                if ((monthSavedTotalCount2 + addedAmount) > monthValidTotalCount) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function checkTotalCountWithValidTotalCount(thisCtrl, foodTypeCheckBoxesArray, foodTypeCombosArray, validTotalCount) {
+            var currentSelectedCount = 0;
+            for (var i = 0; i < foodTypeCheckBoxesArray.length; i++) {
+                var ctrl = document.getElementById(foodTypeCheckBoxesArray[i]);
+
+                if (ctrl == null || ctrl == 'undefined')
+                    continue;
+
+                if (ctrl.getAttribute("mealtypeid") != thisCtrl.getAttribute("mealtypeid"))
+                    continue;
+
+                if (ctrl.checked) {
+                    currentSelectedCount += parseInt(document.getElementById(foodTypeCombosArray[i]).value);
+                }
+            }
+            return currentSelectedCount > validTotalCount;
+        }
+
+        function decreaseCredit(price) {
+            var credit = parseInt(document.getElementById('creditId').innerText);
+            credit = credit - price;
+            document.getElementById('creditId').innerText = credit;
+            document.getElementById('remainCreditId').value = credit;
+        }
+
+        function increaseCredit(price) {
+            var credit = parseInt(document.getElementById('creditId').innerText);
+            credit = credit + price;
+            document.getElementById('creditId').innerText = credit;
+            document.getElementById('remainCreditId').value = credit;
+        }
+
+        function updateCredit(ctl, fee, lastAmountId, foodTypeCheckBoxesArray, foodTypeCombosArray, validTotalCount, mealTypeId, reservedCount, reservePrice, monthIndex) {
+            var lastAmount = parseInt(document.getElementById(lastAmountId).value);
+
+            if (checkTotalCountWithValidTotalCount(ctl, foodTypeCheckBoxesArray, foodTypeCombosArray, validTotalCount)) {
+                alert('مجموع تعداد غذاهای انتخاب شده بیشتر از تعداد مجاز گروه شما در این وعده میباشد.');
+                ctl.value = document.getElementById(lastAmountId).value;
+                return;
+            }
+
+            var addedAmount = parseInt(ctl.value) - parseInt(lastAmount);
+            if (checkMealTypeWeekValidCount(mealTypeId, addedAmount)) {
+                alert('مجموع تعداد غذاهای انتخاب شده بیشتر از تعداد مجاز گروه شما در این وعده در هفته میباشد.');
+                ctl.value = document.getElementById(lastAmountId).value;
+                return;
+            }
+
+            if (checkMealTypeSelfWeekValidCount(mealTypeId, addedAmount)) {
+                alert('مجموع تعداد غذاهای انتخاب شده بیشتر از تعداد مجاز گروه شما در این وعده در این سلف در هفته میباشد.');
+                ctl.value = document.getElementById(lastAmountId).value;
+                return;
+            }
+
+            if (checkMealTypeMonthValidCount(mealTypeId, addedAmount, monthIndex)) {
+                alert('مجموع تعداد غذاهای انتخاب شده بیشتر از تعداد مجاز گروه شما در این وعده در ماه میباشد.');
+                ctl.value = document.getElementById(lastAmountId).value;
+                return;
+            }
+
+            if (checkWeekValidCount(addedAmount)) {
+                alert('مجموع تعداد غذاهای انتخاب شده بیشتر از تعداد مجاز گروه شما در کل هفته می باشد.');
+                ctl.value = document.getElementById(lastAmountId).value;
+                return;
+            }
+
+            if (checkMonthValidCount(addedAmount, monthIndex)) {
+                alert('مجموع تعداد غذاهای انتخاب شده بیشتر از تعداد مجاز گروه شما در کل ماه می باشد.');
+                ctl.value = document.getElementById(lastAmountId).value;
+                return;
+            }
+
+            var freeRestaurant = document.getElementById("freeRestaurant").value == 'true';
+            reservationChanged = true;
+            if (!freeRestaurant && parseInt(ctl.value) > lastAmount) {
+                if (reservedCount != null && reservePrice != null) {
+                    if (reservedCount <= parseInt(ctl.value)) {
+                        decreaseCredit(reservePrice * (reservedCount - lastAmount));
+                        decreaseCredit(fee * (parseInt(ctl.value) - reservedCount));
+                    } else {
+                        decreaseCredit(reservePrice * (parseInt(ctl.value) - lastAmount));
+                    }
+                } else {
+                    decreaseCredit(fee * (parseInt(ctl.value) - lastAmount));
+                }
+            } else if (!freeRestaurant) {
+                if (reservedCount != null && reservePrice != null) {
+                    if (reservedCount < parseInt(ctl.value)) {
+                        increaseCredit(fee * (lastAmount - parseInt(ctl.value)));
+                    } else {
+                        increaseCredit(fee * (lastAmount - reservedCount));
+                        increaseCredit(reservePrice * (reservedCount - parseInt(ctl.value)));
+                    }
+                } else {
+                    increaseCredit(fee * (lastAmount - parseInt(ctl.value)));
+                }
+            }
+            weekSavedTotalCount += addedAmount;
+            if (monthIndex == 1) {
+                monthSavedTotalCount1 += addedAmount;
+            }
+            if (monthIndex == 2) {
+                monthSavedTotalCount2 += addedAmount;
+            }
+            var mealTypeSavedCount = getMealTypeSaveCount(mealTypeId);
+            var mealTypeSelfSavedCount = getMealTypeSelfSaveCount(mealTypeId);
+            document.getElementById(lastAmountId).value = ctl.value;
+            updateMealTypeSaveCount(mealTypeId, mealTypeSavedCount + addedAmount);
+            updateMealTypeSelfSaveCount(mealTypeId, mealTypeSelfSavedCount + addedAmount);
+            updateMealTypeMonthSaveCount(mealTypeId, mealTypeSavedCount + addedAmount, monthIndex);
+        }
+
+        function selfChanged(ctl) {
+            document.getElementById('selfHiddenId').value = ctl.value;
+            disableButtons();
+            var saveChanges = false;
+            if (reservationChanged) {
+                saveChanges = confirm('شما تغییری در وضعیت غذاهای این سلف داده اید،آیا میخواهید این تغییرات اعمال گردد؟');
+            }
+            if (saveChanges) {
+                document.getElementById('saveAndShowPanelCmd').click();
+            } else {
+                document.getElementById('showPanelCmd').click();
+            }
+        }
+
+        function beforeWeek() {
+            disableButtons();
+            var saveChanges = false;
+            if (reservationChanged) {
+                saveChanges = confirm('شما تغییری در وضعیت غذاهای این هفته داده اید،آیا میخواهید این تغییرات اعمال گردد؟');
+            }
+            if (saveChanges) {
+                document.getElementById('saveAndShowPreviousWeekCmd').click();
+            } else {
+                document.getElementById('showPreviousWeekCmd').click();
+            }
+        }
+
+        function currWeek() {
+            disableButtons();
+            var saveChanges = false;
+            if (reservationChanged) {
+                saveChanges = confirm('شما تغییری در وضعیت غذاهای این هفته داده اید،آیا میخواهید این تغییرات اعمال گردد؟');
+            }
+            if (saveChanges) {
+                document.getElementById('saveAndShowCurrentWeekCmd').click();
+            } else {
+                document.getElementById('showCurrentWeekCmd').click();
+            }
+        }
+
+        function nextWeek() {
+            disableButtons();
+            var saveChanges = false;
+            if (reservationChanged) {
+                saveChanges = confirm('شما تغییری در وضعیت غذاهای این هفته داده اید،آیا میخواهید این تغییرات اعمال گردد؟');
+            }
+            if (saveChanges) {
+                document.getElementById('saveAndShowNextWeekCmd').click();
+            } else {
+                document.getElementById('showNextWeekCmd').click();
+            }
+        }
+
+        function finalReserve() {
+            disableButtons();
+            document.getElementById('doReserveCmd').click();
+        }
+
+        function displayPanel() {
+            alert('inside displayPanel');
+            try {
+                document.getElementById('displayPanelCmd').click();
+            } catch (e) {
+                alert(e.message);
+            }
+        }
+
+        function disableButtons() {
+            show_loading(true);
+            document.getElementById('selfId').disabled = true;
+            document.getElementById('beforeWeekImgBtn').disabled = true;
+            document.getElementById('currWeekBtn').disabled = true;
+            document.getElementById('nextWeekBtn').disabled = true;
+            document.getElementById('displayBtn').disabled = true;
+            try {
+                document.getElementById('doReservBtn').disabled = true;
+            } catch (e) {
+            }
+        }
+
+        function xstooltip_findPosX(obj) {
+            var curleft = 0;
+            if (obj.offsetParent) {
+                while (obj.offsetParent) {
+                    curleft += obj.offsetLeft
+                    obj = obj.offsetParent;
+                }
+            } else if (obj.x)
+                curleft += obj.x;
+            return curleft;
+        }
+
+        function xstooltip_findPosY(obj) {
+            var curtop = 0;
+            if (obj.offsetParent) {
+                while (obj.offsetParent) {
+                    curtop += obj.offsetTop
+                    obj = obj.offsetParent;
+                }
+            } else if (obj.y)
+                curtop += obj.y;
+            return curtop;
+        }
+
+        function xstooltip_show(tooltipId, parentId, posX, posY) {
+            var it = document.getElementById(tooltipId);
+
+            if ((it.style.top == '' || it.style.top == 0)
+                && (it.style.left == '' || it.style.left == 0)) {
+                // need to fixate default size (MSIE problem)
+                it.style.width = it.offsetWidth + 'px';
+                it.style.height = it.offsetHeight + 'px';
+
+                var foodNameSpan = document.getElementById(parentId);
+
+                // if tooltip is too wide, shift left to be within parent
+                if (posX + it.offsetWidth > foodNameSpan.offsetWidth) posX = foodNameSpan.offsetWidth - it.offsetWidth;
+                if (posX < 0) posX = 0;
+
+                x = xstooltip_findPosX(foodNameSpan) - (1.2 * posX);
+                y = xstooltip_findPosY(foodNameSpan) + posY;
+
+                it.style.top = y + 'px';
+                it.style.left = x + 'px';
+            }
+
+            it.style.visibility = 'visible';
+        }
+
+        function xstooltip_hide(id) {
+            var it = document.getElementById(id);
+            it.style.visibility = 'hidden';
+        }
+
+        function confirmSell(redirect) {
+            var x;
+            var r = confirm("آیا مطمئن هستید که میخواهید این غذا را به عنوان غذای آزاد تعریف کنید؟");
+            if (r == true) {
+                window.location.href = redirect;
+            }
+
+        }
+
+        function confirmCancelSell(redirect) {
+            var x;
+            var r = confirm("آیا مطئن هستید که میخواهید این غذا را از لیست غذاهای آزاد خارج کنید؟");
+            if (r == true) {
+                window.location.href = redirect;
+            }
+
+        }
+
+        function enableFreeFood(checkBoxId, freeFoodSelectedHiddenId, numberComboId) {
+            var hiddenCheckBox = document.getElementById(checkBoxId + "_hidden");
+            var hiddenNumberCombo = document.getElementById(numberComboId + "_hidden");
+            if (hiddenCheckBox != null) {
+                hiddenCheckBox.disabled = true;
+            }
+            if (hiddenNumberCombo != null) {
+                hiddenNumberCombo.disabled = true;
+            }
+            if (document.getElementById(checkBoxId).checked) {
+                doEnableDisableNumberForFreeFood = false;
+                document.getElementById(numberComboId).disabled = false;
+            } else {
+                doEnableDisableNumberForFreeFood = true;
+            }
+            document.getElementById(checkBoxId).checked = true;
+            document.getElementById(checkBoxId).disabled = false;
+            document.getElementById(freeFoodSelectedHiddenId).value = true;
+            alert('امکان خرید غذای آزاد مورد نظر فراهم شد، جهت تکمیل فرآیند خرید، تعداد را انتخاب کرده و دکمه تایید را فشار دهید.');
+        }
+
+        function setSelfChangeReserveIdValue(val1, val2) {
+            document.getElementById('selfChangeReserveId').value = val1;
+            document.getElementById('weekStartDateTimeAjx').value = val2;
+        }
+
+
+    </script>
+    <style type="text/css">
+        .xstooltip {
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            background-color: #ffff99;
+            font: normal 8pt sans-serif;
+            padding: 3px;
+            border: solid 1px;
+        }
+    </style>
+    <body >
+    <div id="loading" class="loading_div">
+        <img alt="Loading ..." class="loading_icon" align="absmiddle"
+             src="/images/ajax-loader-big.gif"/>
+    </div>
+    <div style="background-color: #f5efe6">
+        <!-- Header Pic -->
+        
+            <div class="d-flex justify-content-between align-items-center pt-1 pb-1 pr-2 pl-2"
+                 style="width: 100%;height:50px;background-color:#E1E1E1;color: #333333">
+                <!--Logo-->
+                <div class="d-flex align-items-center font-weight-bold">
+                    <img src="/styles/newui/images/logo23.png" alt="logo">
+                    <h4 class="mr-2">سامانه مدیریت امور دانشجویی (سماد)</h4>
+                    
+                </div>
+                <div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="font-weight-bold pl-1">
+                            نام&nbsp;
+                            نام‌خانوادگی&nbsp;&nbsp;
+                            
+                            <span style="width: 48px !important;display: inline-block" id="the_time"></span>
+                            1405/09/01
+                            <div class="d-inline-block" style="vertical-align: middle;">
+                                <span id="user_username" style="cursor: pointer; user-select: none">
+                                    <span class="fas fa-user-circle fa-lg"></span>
+                                    00000000000
+                                    
+                                </span>
+                                    
+                            </div>
+                            <div class="ui-notification-container">
+                            </div>
+                        </div>
+                        
+                        <div class="pr-1" style="vertical-align: top">
+                            <span onclick="openGeneralAjaxDialog('/messaging/snippetMessageList.rose',
+                                    'پیام های دریافتی')" style="cursor:pointer">
+                                <div class="noti_bubble" id="messages_noti_bubble_id"></div>
+                                <span class="fas fa-envelope" style="font-size:18px;" id="envelop_img_id"></span>
+                            </span>
+                            
+
+                            <input type="hidden" name="userMessageId" value="" id="userMessageId"/>
+
+                            <div id="viewMessageSnippetDialog"
+>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	var options_viewMessageSnippetDialog = {};
+	options_viewMessageSnippetDialog.height = 500;
+	options_viewMessageSnippetDialog.width = 900;
+	options_viewMessageSnippetDialog.show = "slide";
+	options_viewMessageSnippetDialog.hide = "slide";
+	options_viewMessageSnippetDialog.autoOpen = false;
+	options_viewMessageSnippetDialog.modal = true;
+	options_viewMessageSnippetDialog.opentopics = "openRemoteDialog";
+	options_viewMessageSnippetDialog.jqueryaction = "dialog";
+	options_viewMessageSnippetDialog.id = "viewMessageSnippetDialog";
+	options_viewMessageSnippetDialog.href = "#";
+
+jQuery.struts2_jquery_ui.bind(jQuery('#viewMessageSnippetDialog'),options_viewMessageSnippetDialog);
+ });
+</script>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        <!-- Menu -->
+        <div>
+            <link href="/scripts/jquery-mega-drop-down-menu/css/skins/blue.css" type="text/css" rel="stylesheet">
+<script src="/scripts/jquery-mega-drop-down-menu/js/jquery.hoverIntent.minified.js" type="text/javascript"></script>
+<script src="/scripts/jquery-mega-drop-down-menu/js/jquery.dcmegamenu.1.3.3.js" type="text/javascript"></script>
+<script type="text/javascript">
+  jQuery(function () {
+            jQuery('#mega-menu-1').dcMegaMenu({ 
+        rowItems:'5',
+        speed:'slow',
+        effect:'slide'
+		 });
+ jQuery('#mega-menu-1').click(function () {
+ var subNav = $('.sub', this); 
+ $(this).removeClass('mega-hover');
+  $(subNav).hide();
+  });         });    </script>
+ <div class="blue">
+            <ul id="mega-menu-1" class="mega-menu">  <li>
+<a  class="dc-mega" href=/index.rose>صفحه اول<span class="dc-mega-icon"></span></a></li>  <li>
+<a  class="dc-mega" href=/>گزارشات سامانه ها<span class="dc-mega-icon"></span></a><ul>	<li><a href="/">گزارشات کاربر سامانه تغذیه</a><ul>	<li><a href="/nurture/user/credit/sentCreditReport.rose">گزارش اعتبار فرستاده شده</a>	</li>	<li><a href="/nurture/user/credit/recievedCreditReport.rose">گزارش اعتبار دریافتی</a>	</li>	<li><a href="/nurture/user/log/report/show.rose">گزارش عملکرد</a>	</li></ul>	</li></ul></li>  <li>
+<a  class="dc-mega" href=/>سامانه تغذیه<span class="dc-mega-icon"></span></a><ul>	<li><a href="/">عملیات کاربر سامانه</a><ul>	<li><a href="/nurture/user/multi/reserve/showPanel.rose">رزرو غذا</a>	</li>	<li><a href="#" onclick="openGeneralAjaxDialog('/nurture/user/reserve/dailysale/panel.rose','خرید روز فروش غذا');" >خرید روز فروش غذا</a>	</li>	<li><a href="/nurture/user/credit/charge/view.rose">افزایش اعتبار</a>	</li>	<li><a href="/nurture/user/credit/inputTransferCreditInfo.rose">انتقال اعتبار</a>	</li>	<li><a href="/student/forgetCard/list.rose">فراموشی کارت</a>	</li>	<li><a href="/nurture/user/profile/changeCvv2.rose">تغییر رمز دوم</a>	</li>	<li><a href="/nurture/user/cardLock/edit.rose">قفل نمودن کارت</a>	</li></ul>	</li></ul></li>  <li>
+<a  class="dc-mega" href=/>سامانه خوابگاه ها<span class="dc-mega-icon"></span></a><ul>	<li><a href="/">عملیات خوابگاه دانشجو</a><ul>	<li><a href="https://samad.app/dormitory/">ثبت نام خوابگاه</a>	</li>	<li><a href="/student/dormitoryCardex.rose">کاردکس اسکان</a>	</li>	<li><a href="/student/dormitory/reg/payment/view.rose">پرداخت هزینه اتاق</a>	</li></ul>	</li></ul></li>  <li>
+<a  class="dc-mega" href=/>عملیات دانشجو<span class="dc-mega-icon"></span></a><ul>	<li><a href="/student/studentSuggestionShow.rose">ارسال پیشنهادات/انتقادات</a>	</li>	<li><a href="/student/editCultural.rose">توانمندیهای فرهنگی</a>	</li>	<li><a href="/student/fresh/editFamily.rose">اطلاعات خویشاوندان</a>	</li>	<li><a href="/student/preRegSummer/payment/view.rose">پرداخت هزینه ترم تابستان</a>	</li>	<li><a href="/eskan/debt/viewDebtSumForPay.rose">پرداخت جریمه های خوابگاه</a>	</li>	<li><a href="/student/preRegNormal/payment/view.rose">پرداخت بدهی های خوابگاه</a>	</li></ul></li>  <li>
+<a  class="dc-mega" href=/>تبادل پیام<span class="dc-mega-icon"></span></a><ul>	<li><a href="/messaging/inbox.rose">پیام های دریافتی</a>	</li></ul></li>  <li>
+<a  class="dc-mega" href=/>تنظیمات پرونده<span class="dc-mega-icon"></span></a><ul>	<li><a href="/changePassword.rose">تغییر کلمه عبور</a>	</li></ul></li>  <li>
+<a  class="dc-mega" href=/accessMgmt/action/logout.rose>خروج<span class="dc-mega-icon"></span></a></li> </ul>
+</div>
+        </div>
+        <div class="breadcrumb">
+            <i class="font-weight-bold">فرم رزرو غذا</i>
+        </div>
+        <div style="background-color: #f5efe6">
+            <div style="background-color: #f5efe6;min-height: 500px;">
+                <div class="mt-3 mb-2 main_body">
+                    <div class="text-center">
+                        <div class="messages-container">
+                            <div style="width: 100%;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="error" id="errorMessages">
+        
+            <img src="/images/iconWarning.gif"
+                alt="هشدار" class="icon" />
+            شما  در یک وعده {0} مورد انتخاب کرده اید در حالیکه حداکثر باید {1} مورد انتخاب کنید.<br />
+        
+    </div>
+    
+
+
+</div>
+                        </div>
+                        
+                        <div class="body-container">
+                            <script type="text/javascript">
+    var _csrf_token_headers =  {'X-CSRF-TOKEN' : '00000000-0000-0000-0000-000000000000'};
+    function addUniqueParam(jForm) {
+        jForm.action = jForm.action;
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form id="resFinalform" name="resFinalform" action="/nurture/user/multi/reserve/reserve.rose" method="post" style="text-align: right !important;"><table>
+
+    <input type="hidden" name="_csrf" value="00000000-0000-0000-0000-000000000000" />
+    <input type="hidden" name="selfChangeReserveId" value="" id="selfChangeReserveId"/>
+    <input type="hidden" name="weekStartDateTimeAjx" value="1795260202855" id="weekStartDateTimeAjx"/>
+    <input type="hidden" name="freeRestaurant" value="" id="freeRestaurant"/>
+    
+
+    <div id="changeSelfDialog"
+>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	var options_changeSelfDialog = {};
+	options_changeSelfDialog.height = 300;
+	options_changeSelfDialog.width = 450;
+	options_changeSelfDialog.title = "\u062A\u063A\u06CC\u06CC\u0631 \u0633\u0644\u0641 \u0631\u0632\u0631\u0648";
+	options_changeSelfDialog.show = "slide";
+	options_changeSelfDialog.hide = "slide";
+	options_changeSelfDialog.autoOpen = false;
+	options_changeSelfDialog.closeOnEscape = false;
+	options_changeSelfDialog.modal = true;
+	options_changeSelfDialog.opentopics = "openRemoteDialog";
+	options_changeSelfDialog.jqueryaction = "dialog";
+	options_changeSelfDialog.id = "changeSelfDialog";
+	options_changeSelfDialog.href = "#";
+
+jQuery.struts2_jquery_ui.bind(jQuery('#changeSelfDialog'),options_changeSelfDialog);
+ });
+</script>
+
+    <tr>
+    <td id="pageTD" style="border:1px;" align="center">
+    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="10%">
+            موجودی:&nbsp;
+            <span id="creditId">1390000</span><span>&nbsp;ریال</span>
+            <input type="button"
+                   ONCLICK="window.location.href='/nurture/user/credit/charge/view.rose'"
+                   style="margin-right: 5px;" class="ui-widget ui-corner-all btn-search"
+                   value="افزایش اعتبار"/>
+        </td>
+        <td width="5%">
+            سلف:
+            <input type="hidden" name="selectedSelfDefId" value="12" id="selfHiddenId"/>
+            <select name="selectedSelfDefIdCombo" id="selfId" class="ui-state-default ui-corner-all" style=" padding: 2px;
+                            margin-top: 5px;
+                            width: 180px;
+                            border: 1px solid #838383" onchange="selfChanged(this);">
+    <option value="1">دامپزشکی - 1</option>
+    <option value="2">علوم - 2</option>
+    <option value="3">مرکزی - 3</option>
+    <option value="4">ادبیات - 4</option>
+    <option value="20">تاک مرکزی - 20</option>
+    <option value="6">هنر - 6</option>
+    <option value="7">کلینیک - 7</option>
+    <option value="11">پردیس شهر - 11</option>
+    <option value="12" selected="selected">تاک دامپزشکی - 12</option>
+    <option value="13">سلف موردنظررا انتخاب کنید - 13</option>
+</select>
+
+
+        </td>
+        <td align="left" width="5%" style="padding-left: 10px;vertical-align: bottom;">
+            <input type="image" style="width:26px;height:auto" id="beforeWeekImgBtn"
+                   title='هفته قبلی'
+                   onclick="beforeWeek();return false;" src='/images/right.jpg'
+                   width="26"/>
+        </td>
+        <td align="center" width="5%" style="vertical-align: bottom;">
+            <input type="button" style="margin-right: 5px"
+                   class="ui-button ui-widget ui-state-default ui-corner-all"
+                   onclick="currWeek();" id="currWeekBtn"
+                   value="هفته جاری"/>
+        </td>
+        <td align="right" width="5%" style="vertical-align: bottom;">
+            <input type="image" style="width:26px;height:auto" onclick="nextWeek();return false;"
+                   id="nextWeekBtn" title='هفته بعدی'
+                   src='/images/left.jpg' width="26"/>
+        </td>
+        <td width="auto" align="center" style="vertical-align: bottom;">
+            <input type="button" onclick="document.getElementById('displayPanelCmd').click();"
+                   value="مشاهده وضعیت رزروها"
+                   class="ui-button ui-widget ui-state-default ui-corner-all" id="displayBtn"/>
+        </td>
+        <td style="vertical-align: bottom;">
+            <input type="button" style="width:50px;" onclick="finalReserve();"
+                   value="تایید"
+                   class="ui-widget ui-corner-all btn-success" id="doReservBtn"/>
+        </td>
+    </tr>
+
+    
+    <tr>
+    <td colspan="7">
+    
+        
+            
+                
+                <style>
+
+                    .g-container {
+                        display: inline-block;
+                        position: relative;
+                        width: 110px;
+                        height: 30px;
+                        font-weight: bolder;
+                        font-size: 10pt;
+                        text-align: center;
+                        border: 1px solid #CCCCCC;
+                        border: none;
+                    }
+
+                    .g-selectbox {
+                        cursor: default;
+                        background-color: rgba(255, 255, 255, 0.05);
+                        border: 1px solid rgba(155, 155, 155, 0.57);
+                        border-radius: 1px 1px 1px 1px;
+                        font-size: 1px;
+                        height: 11px;
+                        margin: 0 4px 2px 1px;
+                        outline: 0 none;
+                        vertical-align: text-bottom;
+                        width: 11px;
+                        display: inline-block;
+                        position: relative;
+                    }
+
+                    .g-selectbox-inner {
+                        height: 15px;
+                        left: 0;
+                        outline: 0 none;
+                        position: relative;
+                        top: -3px;
+                        width: 15px;
+                    }
+
+                    .g-selectbox-selected {
+                        background: url("/images/g/checkmark.png") no-repeat scroll -5px -3px transparent !important;
+                    }
+
+                    .g-selectbox-partial {
+                        background: url("/images/g/checkmark-partial.png") no-repeat scroll -5px -3px transparent !important;
+
+                    }
+
+                    .g-arrow {
+                        opacity: 0.55;
+                        margin-top: 5px;
+                        vertical-align: middle;
+                        background: url("/images/g/arrow_down.png") no-repeat scroll 0 1px transparent;
+                        display: inline-block;
+                        position: relative;
+                        font-size: 0;
+                        height: 20px;
+                        margin-left: 3px;
+                        width: 25px;
+                    }
+
+                    .g-drawer {
+                        -moz-user-select: none;
+                        border: 1px solid rgba(155, 155, 155, 0.57);
+                        border-radius: 1px 1px 1px 1px;
+                        position: relative;
+                        margin: 10px 0 0 1px;
+                    }
+
+                    .g-drawer div:hover {
+                        background-color: silver;
+                    }
+
+                </style>
+                <table align="center" width="100%"
+                style="margin-top:5px;height: 400px; background:none;" border="0"
+                cellpadding="0" cellspacing="0">
+                <tr style="font-weight: bolder;font-size: 12pt;text-align: center; background:#F0F0F0;">
+                    <th style="font-weight: bolder;font-size: 10pt;text-align: center;border:1px solid #CCCCCC;">
+                        روز</th>
+                    
+                        
+                            
+                            <td style="font-weight: bolder;font-size: 10pt;text-align: center;border:1px solid #CCCCCC; border-right:none;">
+                                صبحانه
+                                <div id="ftActionContainerId_2"
+                                     mtid="2" ftidlist="" currftid="">
+                                    <!-- <div class="g-container" dir="ltr">
+                                        <span class="g-selectbox " >
+                                            <div id="" class="g-selectbox-inner" onclick="g_ftSelectionClicked(this);"></div>
+                                        </span>
+                                        <div class="g-arrow ">&nbsp;</div>
+                                    </div> -->
+                                </div>
+                            </td>
+                            
+                        
+                    
+                        
+                            
+                            <td style="font-weight: bolder;font-size: 10pt;text-align: center;border:1px solid #CCCCCC; border-right:none;">
+                                ناهار
+                                <div id="ftActionContainerId_3"
+                                     mtid="3" ftidlist="" currftid="">
+                                    <!-- <div class="g-container" dir="ltr">
+                                        <span class="g-selectbox " >
+                                            <div id="" class="g-selectbox-inner" onclick="g_ftSelectionClicked(this);"></div>
+                                        </span>
+                                        <div class="g-arrow ">&nbsp;</div>
+                                    </div> -->
+                                </div>
+                            </td>
+                            
+                        
+                    
+                        
+                            
+                            <td style="font-weight: bolder;font-size: 10pt;text-align: center;border:1px solid #CCCCCC; border-right:none;">
+                                شام
+                                <div id="ftActionContainerId_1"
+                                     mtid="1" ftidlist="" currftid="">
+                                    <!-- <div class="g-container" dir="ltr">
+                                        <span class="g-selectbox " >
+                                            <div id="" class="g-selectbox-inner" onclick="g_ftSelectionClicked(this);"></div>
+                                        </span>
+                                        <div class="g-arrow ">&nbsp;</div>
+                                    </div> -->
+                                </div>
+                            </td>
+                            
+                        
+                    
+                        
+                    
+                </tr>
+                
+                
+                    <tr>
+
+                    <td valign="middle" align="center" width="12%"
+                        style="background:#F0F0F0;border:1px solid #CCCCCC; border-top:none;">
+                        شنبه
+                        <br/>
+                        <div>1405/08/30</div>
+                        <br/>
+                    </td>
+                    
+                    
+                        
+                        <td valign="top"
+                            style="border:1px solid #CCCCCC; border-top:none; border-right:none;">
+                            &nbsp;
+
+                        </td>
+                        
+                    
+                        
+                        <td width="29%" valign="top"
+                        style="border:1px solid #CCCCCC; border-top:none; border-right:none;">
+                        
+                        <div style="border: dashed 0px #777777; padding : 3px; margin : 2px; background-color: #dddddd;">
+                            3-مرکزی / غذای پرهزینه یک / چلو خورشت قیمه بادمجان /  / 1
+                        </div>
+                        
+                        </td>
+                        
+                    
+                        
+                        <td width="29%" valign="top"
+                        style="border:1px solid #CCCCCC; border-top:none; border-right:none;">
+                        
+                        <table align="center" width="100%" border="0" cellpadding="0"
+                        cellspacing="2" style="border:0;">
+                        
+                        
+                            
+                                
+                                    
+                                
+                            
+                        
+                        
+                            
+                                <tr>
+                                <td>
+                                <div style="border: dashed 0px #777777; padding : 3px; margin : 2px; background-color: #dddddd;">
+                                <table>
+                                <td width="300px" align="right">
+                                
+                                    
+
+                                    
+                                    <input type="hidden"
+                                           name="userWeekReserves[0].selected"
+                                           id="userWeekReserves.selected0_hidden"
+                                           value="true"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[0].selectedCount"
+                                           id="userWeekReserves.selectedCount0_hidden"
+                                           value="1"/>
+                                    
+
+                                    <tr>
+                                    <td>
+                                        <input type="checkbox"
+                                               value="true"
+                                               onclick="enableDisableNumber(this, 'userWeekReserves.selectedCount0', '250000', 'hiddenSelectedCount0', new Array( 'userWeekReserves.selected0'), new Array( 'userWeekReserves.selectedCount0'), '1', '1',1,250000,1);"
+                                                
+                                               checked
+                                                
+                                                
+                                               disabled
+                                                
+                                               name="userWeekReserves[0].selected"
+                                                
+                                               id="userWeekReserves.selected0"
+                                               programDate="2026-11-21"
+                                               mealTypeId="1"
+                                               foodTypeId="599"
+                                               foodId="60"/>
+
+                                        <span id="foodNameSpan_699583"
+                                              onmouseover="xstooltip_show('foodPriceTooltip_699583', 'foodNameSpan_699583', this.offsetLeft, this.offsetTop);"
+                                              onmouseout="xstooltip_hide('foodPriceTooltip_699583');">
+
+                                                                                            <label for="userWeekReserves.selected0">
+                                                                                                غذای تاک متوسط هزینه | غذای تاک | 
+                                                                                            </label>
+                                                                                        </span>
+                                    </td>
+                                    <td>
+                                        <select name="userWeekReserves[0].selectedCount" size="1"  id="userWeekReserves.selectedCount0" onchange="updateCredit(this, '250000','hiddenSelectedCount0', new Array( 'userWeekReserves.selected0'), new Array( 'userWeekReserves.selectedCount0'), '1', '1',1,250000,1);" value="1" style="width:50px; disabled:true">
+<option value="1" selected>1</option>
+</select>
+
+                                    </td>
+                                    </tr>
+                                    <input type="hidden"
+                                           id="hiddenSelectedCount0"
+                                           value="1"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[0].id"
+                                           value="9607355"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[0].programId"
+                                           value="699583"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[0].mealTypeId"
+                                           value="1"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[0].programDateTime"
+                                           value="1795206600000"/>
+                                    
+                                    <input type="hidden"
+                                           name="userWeekReserves[0].selfId"
+                                           value="12"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[0].foodTypeId"
+                                           value="599"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[0].foodId"
+                                           value="60"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[0].priorReserveDateStr"
+                                           value="null"/>
+
+                                    <div id="foodPriceTooltip_699583"
+                                         class="xstooltip">
+                                        
+                                            250000
+                                        ریال
+                                        
+                                    </div>
+
+                                    
+                                    <input type="hidden"
+                                           id="userWeekReserves[0].freeFoodSelected"
+                                           name="userWeekReserves[0].freeFoodSelected"
+                                           value="false"/>
+                                    
+
+
+                                    
+
+
+                                
+                                </td>
+                                </table>
+                                </div>
+                                </td>
+                                </tr>
+                            
+                        
+                        </table>
+                        
+                        </td>
+                        
+                    
+
+                    </tr>
+                
+                    <tr>
+
+                    <td valign="middle" align="center" width="12%"
+                        style="background:#F0F0F0;border:1px solid #CCCCCC; border-top:none;">
+                        یکشنبه
+                        <br/>
+                        <div>1405/09/01</div>
+                        <br/>
+                    </td>
+                    
+                    
+                        
+                        <td valign="top"
+                            style="border:1px solid #CCCCCC; border-top:none; border-right:none;">
+                            &nbsp;
+
+                        </td>
+                        
+                    
+                        
+                        <td width="29%" valign="top"
+                        style="border:1px solid #CCCCCC; border-top:none; border-right:none;">
+                        
+                        <div style="border: dashed 0px #777777; padding : 3px; margin : 2px; background-color: #dddddd;">
+                            3-مرکزی / غذای پرهزینه یک / چلو مرغ /  / 1
+                        </div>
+                        
+                        </td>
+                        
+                    
+                        
+                        <td width="29%" valign="top"
+                        style="border:1px solid #CCCCCC; border-top:none; border-right:none;">
+                        
+                        <table align="center" width="100%" border="0" cellpadding="0"
+                        cellspacing="2" style="border:0;">
+                        
+                        
+                            
+                                
+                                    
+                                
+                            
+                        
+                        
+                            
+                                <tr>
+                                <td>
+                                <div style="border: dashed 0px #777777; padding : 3px; margin : 2px; background-color: #dddddd;">
+                                <table>
+                                <td width="300px" align="right">
+                                
+                                    
+
+                                    
+                                    <input type="hidden"
+                                           name="userWeekReserves[1].selected"
+                                           id="userWeekReserves.selected1_hidden"
+                                           value="true"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[1].selectedCount"
+                                           id="userWeekReserves.selectedCount1_hidden"
+                                           value="1"/>
+                                    
+
+                                    <tr>
+                                    <td>
+                                        <input type="checkbox"
+                                               value="true"
+                                               onclick="enableDisableNumber(this, 'userWeekReserves.selectedCount1', '250000', 'hiddenSelectedCount1', new Array( 'userWeekReserves.selected1'), new Array( 'userWeekReserves.selectedCount1'), '1', '1',1,250000,2);"
+                                                
+                                               checked
+                                                
+                                                
+                                               disabled
+                                                
+                                               name="userWeekReserves[1].selected"
+                                                
+                                               id="userWeekReserves.selected1"
+                                               programDate="2026-11-22"
+                                               mealTypeId="1"
+                                               foodTypeId="599"
+                                               foodId="60"/>
+
+                                        <span id="foodNameSpan_699593"
+                                              onmouseover="xstooltip_show('foodPriceTooltip_699593', 'foodNameSpan_699593', this.offsetLeft, this.offsetTop);"
+                                              onmouseout="xstooltip_hide('foodPriceTooltip_699593');">
+
+                                                                                            <label for="userWeekReserves.selected1">
+                                                                                                غذای تاک متوسط هزینه | غذای تاک | 
+                                                                                            </label>
+                                                                                        </span>
+                                    </td>
+                                    <td>
+                                        <select name="userWeekReserves[1].selectedCount" size="1"  id="userWeekReserves.selectedCount1" onchange="updateCredit(this, '250000','hiddenSelectedCount1', new Array( 'userWeekReserves.selected1'), new Array( 'userWeekReserves.selectedCount1'), '1', '1',1,250000,2);" value="1" style="width:50px; disabled:true">
+<option value="1" selected>1</option>
+</select>
+
+                                    </td>
+                                    </tr>
+                                    <input type="hidden"
+                                           id="hiddenSelectedCount1"
+                                           value="1"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[1].id"
+                                           value="9607366"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[1].programId"
+                                           value="699593"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[1].mealTypeId"
+                                           value="1"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[1].programDateTime"
+                                           value="1795293000000"/>
+                                    
+                                    <input type="hidden"
+                                           name="userWeekReserves[1].selfId"
+                                           value="12"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[1].foodTypeId"
+                                           value="599"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[1].foodId"
+                                           value="60"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[1].priorReserveDateStr"
+                                           value="null"/>
+
+                                    <div id="foodPriceTooltip_699593"
+                                         class="xstooltip">
+                                        
+                                            250000
+                                        ریال
+                                        
+                                    </div>
+
+                                    
+                                    
+                                    <input type="hidden"
+                                           id="userWeekReserves[1].freeFoodSelected"
+                                           name="userWeekReserves[1].freeFoodSelected"
+                                           value="false"/>
+                                    
+
+
+                                    
+
+
+                                
+                                </td>
+                                </table>
+                                </div>
+                                </td>
+                                </tr>
+                            
+                        
+                        </table>
+                        
+                        </td>
+                        
+                    
+
+                    </tr>
+                
+                    <tr>
+
+                    <td valign="middle" align="center" width="12%"
+                        style="background:#F0F0F0;border:1px solid #CCCCCC; border-top:none;">
+                        دوشنبه
+                        <br/>
+                        <div>1405/09/02</div>
+                        <br/>
+                    </td>
+                    
+                    
+                        
+                        <td valign="top"
+                            style="border:1px solid #CCCCCC; border-top:none; border-right:none;">
+                            &nbsp;
+
+                        </td>
+                        
+                    
+                        
+                        <td width="29%" valign="top"
+                        style="border:1px solid #CCCCCC; border-top:none; border-right:none;">
+                        
+                        <div style="border: dashed 0px #777777; padding : 3px; margin : 2px; background-color: #dddddd;">
+                            3-مرکزی / غذای پرهزینه یک / چلو کوبیده میکس+ گوجه+سوپ جو /  / 1
+                        </div>
+                        
+                        </td>
+                        
+                    
+                        
+                        <td width="29%" valign="top"
+                        style="border:1px solid #CCCCCC; border-top:none; border-right:none;">
+                        
+                        <table align="center" width="100%" border="0" cellpadding="0"
+                        cellspacing="2" style="border:0;">
+                        
+                        
+                            
+                                
+                                    
+                                
+                            
+                        
+                        
+                            
+                                <tr>
+                                <td>
+                                <div style="border: dashed 0px #777777; padding : 3px; margin : 2px; background-color: #dddddd;">
+                                <table>
+                                <td width="300px" align="right">
+                                
+                                    
+
+                                    
+                                    <input type="hidden"
+                                           name="userWeekReserves[2].selected"
+                                           id="userWeekReserves.selected2_hidden"
+                                           value="true"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[2].selectedCount"
+                                           id="userWeekReserves.selectedCount2_hidden"
+                                           value="1"/>
+                                    
+
+                                    <tr>
+                                    <td>
+                                        <input type="checkbox"
+                                               value="true"
+                                               onclick="enableDisableNumber(this, 'userWeekReserves.selectedCount2', '250000', 'hiddenSelectedCount2', new Array( 'userWeekReserves.selected2'), new Array( 'userWeekReserves.selectedCount2'), '1', '1',1,250000,2);"
+                                                
+                                               checked
+                                                
+                                                
+                                               disabled
+                                                
+                                               name="userWeekReserves[2].selected"
+                                                
+                                               id="userWeekReserves.selected2"
+                                               programDate="2026-11-23"
+                                               mealTypeId="1"
+                                               foodTypeId="599"
+                                               foodId="60"/>
+
+                                        <span id="foodNameSpan_699542"
+                                              onmouseover="xstooltip_show('foodPriceTooltip_699542', 'foodNameSpan_699542', this.offsetLeft, this.offsetTop);"
+                                              onmouseout="xstooltip_hide('foodPriceTooltip_699542');">
+
+                                                                                            <label for="userWeekReserves.selected2">
+                                                                                                غذای تاک متوسط هزینه | غذای تاک | 
+                                                                                            </label>
+                                                                                        </span>
+                                    </td>
+                                    <td>
+                                        <select name="userWeekReserves[2].selectedCount" size="1"  id="userWeekReserves.selectedCount2" onchange="updateCredit(this, '250000','hiddenSelectedCount2', new Array( 'userWeekReserves.selected2'), new Array( 'userWeekReserves.selectedCount2'), '1', '1',1,250000,2);" value="1" style="width:50px; disabled:true">
+<option value="1" selected>1</option>
+</select>
+
+                                    </td>
+                                    </tr>
+                                    <input type="hidden"
+                                           id="hiddenSelectedCount2"
+                                           value="1"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[2].id"
+                                           value="9607378"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[2].programId"
+                                           value="699542"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[2].mealTypeId"
+                                           value="1"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[2].programDateTime"
+                                           value="1795379400000"/>
+                                    
+                                    <input type="hidden"
+                                           name="userWeekReserves[2].selfId"
+                                           value="12"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[2].foodTypeId"
+                                           value="599"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[2].foodId"
+                                           value="60"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[2].priorReserveDateStr"
+                                           value="null"/>
+
+                                    <div id="foodPriceTooltip_699542"
+                                         class="xstooltip">
+                                        
+                                            250000
+                                        ریال
+                                        
+                                    </div>
+
+                                    
+                                    
+                                    <input type="hidden"
+                                           id="userWeekReserves[2].freeFoodSelected"
+                                           name="userWeekReserves[2].freeFoodSelected"
+                                           value="false"/>
+                                    
+
+
+                                    
+
+
+                                
+                                </td>
+                                </table>
+                                </div>
+                                </td>
+                                </tr>
+                            
+                        
+                        </table>
+                        
+                        </td>
+                        
+                    
+
+                    </tr>
+                
+                    <tr>
+
+                    <td valign="middle" align="center" width="12%"
+                        style="background:#F0F0F0;border:1px solid #CCCCCC; border-top:none;">
+                        سه شنبه
+                        <br/>
+                        <div>1405/09/03</div>
+                        <br/>
+                    </td>
+                    
+                    
+                        
+                        <td valign="top"
+                            style="border:1px solid #CCCCCC; border-top:none; border-right:none;">
+                            &nbsp;
+
+                        </td>
+                        
+                    
+                        
+                        <td width="29%" valign="top"
+                        style="border:1px solid #CCCCCC; border-top:none; border-right:none;">
+                        
+                        <div style="border: dashed 0px #777777; padding : 3px; margin : 2px; background-color: #dddddd;">
+                            3-مرکزی / غذای پرهزینه یک / چلوخورشت قرمه سبزی /  / 1
+                        </div>
+                        
+                        </td>
+                        
+                    
+                        
+                        <td width="29%" valign="top"
+                        style="border:1px solid #CCCCCC; border-top:none; border-right:none;">
+                        
+                        <table align="center" width="100%" border="0" cellpadding="0"
+                        cellspacing="2" style="border:0;">
+                        
+                        
+                            
+                                
+                                    
+                                
+                            
+                        
+                        
+                            
+                                <tr>
+                                <td>
+                                <div style="border: dashed 0px #777777; padding : 3px; margin : 2px; background-color: #dddddd;">
+                                <table>
+                                <td width="300px" align="right">
+                                
+                                    
+
+                                    
+
+                                    <tr>
+                                    <td>
+                                        <input type="checkbox"
+                                               value="true"
+                                               onclick="enableDisableNumber(this, 'userWeekReserves.selectedCount3', '250000', 'hiddenSelectedCount3', new Array( 'userWeekReserves.selected3'), new Array( 'userWeekReserves.selectedCount3'), '1', '1',1,250000,2);"
+                                                
+                                               checked
+                                                
+                                                
+                                               name="userWeekReserves[3].selected"
+                                                
+                                               id="userWeekReserves.selected3"
+                                               programDate="2026-11-24"
+                                               mealTypeId="1"
+                                               foodTypeId="599"
+                                               foodId="60"/>
+
+                                        <span id="foodNameSpan_699620"
+                                              onmouseover="xstooltip_show('foodPriceTooltip_699620', 'foodNameSpan_699620', this.offsetLeft, this.offsetTop);"
+                                              onmouseout="xstooltip_hide('foodPriceTooltip_699620');">
+
+                                                                                            <label for="userWeekReserves.selected3">
+                                                                                                غذای تاک متوسط هزینه | غذای تاک | 
+                                                                                            </label>
+                                                                                        </span>
+                                    </td>
+                                    <td>
+                                        <select name="userWeekReserves[3].selectedCount" size="1"  id="userWeekReserves.selectedCount3" onchange="updateCredit(this, '250000','hiddenSelectedCount3', new Array( 'userWeekReserves.selected3'), new Array( 'userWeekReserves.selectedCount3'), '1', '1',1,250000,2);" value="1" style="width:50px; disabled:true">
+<option value="1" selected>1</option>
+</select>
+
+                                    </td>
+                                    </tr>
+                                    <input type="hidden"
+                                           id="hiddenSelectedCount3"
+                                           value="1"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[3].id"
+                                           value="9643925"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[3].programId"
+                                           value="699620"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[3].mealTypeId"
+                                           value="1"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[3].programDateTime"
+                                           value="1795465800000"/>
+                                    
+                                    <input type="hidden"
+                                           name="userWeekReserves[3].selfId"
+                                           value="12"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[3].foodTypeId"
+                                           value="599"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[3].foodId"
+                                           value="60"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[3].priorReserveDateStr"
+                                           value="null"/>
+
+                                    <div id="foodPriceTooltip_699620"
+                                         class="xstooltip">
+                                        
+                                            250000
+                                        ریال
+                                        
+                                    </div>
+
+                                    
+                                    <input type="hidden"
+                                           id="userWeekReserves[3].freeFoodSelected"
+                                           name="userWeekReserves[3].freeFoodSelected"
+                                           value="false"/>
+                                    
+
+
+                                    
+
+
+                                
+                                </td>
+                                </table>
+                                </div>
+                                </td>
+                                </tr>
+                            
+                        
+                        </table>
+                        
+                        </td>
+                        
+                    
+
+                    </tr>
+                
+                    <tr>
+
+                    <td valign="middle" align="center" width="12%"
+                        style="background:#F0F0F0;border:1px solid #CCCCCC; border-top:none;">
+                        چهارشنبه
+                        <br/>
+                        <div>1405/09/04</div>
+                        <br/>
+                    </td>
+                    
+                    
+                        
+                        <td valign="top"
+                            style="border:1px solid #CCCCCC; border-top:none; border-right:none;">
+                            &nbsp;
+
+                        </td>
+                        
+                    
+                        
+                        <td width="29%" valign="top"
+                        style="border:1px solid #CCCCCC; border-top:none; border-right:none;">
+                        
+                        <div style="border: dashed 0px #777777; padding : 3px; margin : 2px; background-color: #dddddd;">
+                            3-مرکزی / غذای پرهزینه یک / چلوجوجه کباب+گوجه / دوغ / 1
+                        </div>
+                        
+                        </td>
+                        
+                    
+                        
+                        <td width="29%" valign="top"
+                        style="border:1px solid #CCCCCC; border-top:none; border-right:none;">
+                        
+                        <table align="center" width="100%" border="0" cellpadding="0"
+                        cellspacing="2" style="border:0;">
+                        
+                        
+                            
+                                
+                                    
+                                
+                            
+                        
+                        
+                            
+                                <tr>
+                                <td>
+                                <div style="border: dashed 0px #777777; padding : 3px; margin : 2px; background-color: #dddddd;">
+                                <table>
+                                <td width="300px" align="right">
+                                
+                                    
+
+                                    
+
+                                    <tr>
+                                    <td>
+                                        <input type="checkbox"
+                                               value="true"
+                                               onclick="enableDisableNumber(this, 'userWeekReserves.selectedCount4', '250000', 'hiddenSelectedCount4', new Array( 'userWeekReserves.selected4'), new Array( 'userWeekReserves.selectedCount4'), '1', '1',1,250000,2);"
+                                                
+                                               checked
+                                                
+                                                
+                                               name="userWeekReserves[4].selected"
+                                                
+                                               id="userWeekReserves.selected4"
+                                               programDate="2026-11-25"
+                                               mealTypeId="1"
+                                               foodTypeId="599"
+                                               foodId="60"/>
+
+                                        <span id="foodNameSpan_699646"
+                                              onmouseover="xstooltip_show('foodPriceTooltip_699646', 'foodNameSpan_699646', this.offsetLeft, this.offsetTop);"
+                                              onmouseout="xstooltip_hide('foodPriceTooltip_699646');">
+
+                                                                                            <label for="userWeekReserves.selected4">
+                                                                                                غذای تاک متوسط هزینه | غذای تاک | 
+                                                                                            </label>
+                                                                                        </span>
+                                    </td>
+                                    <td>
+                                        <select name="userWeekReserves[4].selectedCount" size="1"  id="userWeekReserves.selectedCount4" onchange="updateCredit(this, '250000','hiddenSelectedCount4', new Array( 'userWeekReserves.selected4'), new Array( 'userWeekReserves.selectedCount4'), '1', '1',1,250000,2);" value="1" style="width:50px; disabled:true">
+<option value="1" selected>1</option>
+</select>
+
+                                    </td>
+                                    </tr>
+                                    <input type="hidden"
+                                           id="hiddenSelectedCount4"
+                                           value="1"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[4].id"
+                                           value="9607416"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[4].programId"
+                                           value="699646"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[4].mealTypeId"
+                                           value="1"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[4].programDateTime"
+                                           value="1795552200000"/>
+                                    
+                                    <input type="hidden"
+                                           name="userWeekReserves[4].selfId"
+                                           value="12"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[4].foodTypeId"
+                                           value="599"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[4].foodId"
+                                           value="60"/>
+                                    <input type="hidden"
+                                           name="userWeekReserves[4].priorReserveDateStr"
+                                           value="null"/>
+
+                                    <div id="foodPriceTooltip_699646"
+                                         class="xstooltip">
+                                        
+                                            250000
+                                        ریال
+                                        
+                                    </div>
+
+                                    
+                                    <input type="hidden"
+                                           id="userWeekReserves[4].freeFoodSelected"
+                                           name="userWeekReserves[4].freeFoodSelected"
+                                           value="false"/>
+                                    
+
+
+                                    
+
+
+                                
+                                </td>
+                                </table>
+                                </div>
+                                </td>
+                                </tr>
+                            
+                        
+                        </table>
+                        
+                        </td>
+                        
+                    
+
+                    </tr>
+                
+                </table>
+            
+        
+    
+    </td>
+    </tr>
+
+    </table>
+    </td>
+    </tr>
+    <li style="display: none">
+        <input type="hidden" name="weekStartDateTime" value="1795260092993" id="resFinalform_weekStartDateTime"/>
+        <input type="hidden" name="remainCredit" value="1390000" id="remainCreditId"/>
+        <div class="formButton"    id="wwctrl_showPanelCmd"><input type="submit" value="Submit" id="showPanelCmd" name="method:showPanel" style="display:none"/>
+</div> 
+        <div class="formButton"    id="wwctrl_showNextWeekCmd"><input type="submit" value="Submit" id="showNextWeekCmd" name="method:showNextWeek" style="display:none"/>
+</div> 
+        <div class="formButton"    id="wwctrl_showPreviousWeekCmd"><input type="submit" value="Submit" id="showPreviousWeekCmd" name="method:showPreviousWeek" style="display:none"/>
+</div> 
+        <div class="formButton"    id="wwctrl_showCurrentWeekCmd"><input type="submit" value="Submit" id="showCurrentWeekCmd" name="method:showCurrentWeek" style="display:none"/>
+</div> 
+
+        <div class="formButton"    id="wwctrl_saveAndShowPanelCmd"><input type="submit" value="Submit" id="saveAndShowPanelCmd" name="method:saveAndShowPanel" style="display:none"/>
+</div> 
+        <div class="formButton"    id="wwctrl_saveAndShowNextWeekCmd"><input type="submit" value="Submit" id="saveAndShowNextWeekCmd" name="method:saveAndShowNextWeek" style="display:none"/>
+</div> 
+        <div class="formButton"    id="wwctrl_saveAndShowPreviousWeekCmd"><input type="submit" value="Submit" id="saveAndShowPreviousWeekCmd" name="method:saveAndShowPreviousWeek" style="display:none"/>
+</div> 
+        <div class="formButton"    id="wwctrl_saveAndShowCurrentWeekCmd"><input type="submit" value="Submit" id="saveAndShowCurrentWeekCmd" name="method:saveAndShowCurrentWeek" style="display:none"/>
+</div> 
+        <div class="formButton"    id="wwctrl_doReserveCmd"><input type="submit" value="Submit" id="doReserveCmd" name="method:doReserve" style="display:none"/>
+</div> 
+
+    </li>
+<input type='hidden' name='_csrf' value='00000000-0000-0000-0000-000000000000' /></table>
+</form>
+
+
+
+<form id="displayPanelForm" name="displayPanelForm" action="/nurture/user/multi/reserve/displayPanel.rose" method="post"><table>
+    <li style="display: none">
+        <input type="hidden" name="weekStartDateTime" value="1795260092993" id="displayPanelForm_weekStartDateTime"/>
+        <div class="formButton"    id="wwctrl_displayPanelCmd"><input type="submit" value="Submit" id="displayPanelCmd" name="method:displayPanel"/>
+</div> 
+    </li>
+<input type='hidden' name='_csrf' value='00000000-0000-0000-0000-000000000000' /></table>
+</form>
+
+
+
+
+
+<script type="text/javascript">
+    setPageWidth();
+    document.getElementById('selfId').value = document.getElementById('selfHiddenId').value;
+</script>
+
+<script type="text/javascript">
+
+    var ftMap = {};
+    var mtMap = {};
+
+    
+
+    divId = "ftActionContainerId_" + 1;
+
+    d = document.getElementById(divId);
+
+    ftIdList = '';
+    
+    //construct map
+    ftMap['599'] = 'غذای تاک متوسط هزینه';
+
+    ftIdList += '599' + ',';
+
+    
+
+    d.setAttribute('ftidlist', ftIdList);
+
+    d.appendChild(g_getFtTypeSelectionComponent(divId, '1'));
+
+    mtMap[0] = divId;
+
+
+    $('#drawer_container1').click(function (event) {
+        event.stopPropagation();
+    });
+
+    g_checkTickInContainer('1');
+
+
+    
+
+    $('body').click(function () {
+        if (0 >
+        -1
+    )
+        for (i = 0; i >= 0; --i) {
+            g_drawerRemover(mtMap[i]);
+        }
+    });
+
+    var previousSelectedMap = {}; //mtid => checkbox id array
+
+    function g_getFtTypeSelectionComponent(containerId, mtId) {
+        var div1 = document.createElement('div');
+        div1.setAttribute('id', containerId + '_g_container');
+        div1.setAttribute('class', 'g-container');
+        div1.setAttribute('dir', 'ltr');
+        div1.innerHTML = '<span class=\"g-selectbox\" >' +
+            '<div id=\"ftActionCheckBox_' + mtId + '\" class=\"g-selectbox-inner\" onclick=\"g_ftSelectionClicked(this);\" mtid=\"' + mtId + '\"></div>' +
+            '</span>' +
+            '<div id=\'drawer_container' + mtId + '\' class=\"g-arrow\"  onclick=\"g_drawerClicked(this,\'' + containerId + '\' )\">&nbsp;</div>	</div>';
+        return div1;
+    }
+
+    function g_drawerClicked(sender, containerId) {
+        var destContainer = document.getElementById(containerId + '_g_container');
+        var senderLocation = getElementLocation(destContainer);
+
+        var container = document.getElementById(containerId);
+        var mtId = container.attributes['mtid'].value;
+
+        if (document.getElementById('drawer_' + mtId)) {
+            destContainer.removeChild(document.getElementById('drawer_' + mtId));
+            return;
+        }
+
+        var drawer = g_getFTTypesDrawer(containerId);
+        drawer.style.left = senderLocation.left;
+        drawer.style.top = senderLocation.bottom;
+        drawer.style.display = 'block';
+        destContainer.appendChild(drawer);
+    }
+
+    function g_drawerRemover(containerId) {
+        var destContainer = document.getElementById(containerId + '_g_container');
+        var senderLocation = getElementLocation(destContainer);
+
+        var container = document.getElementById(containerId);
+        var mtId = container.attributes['mtid'].value;
+
+        if (document.getElementById('drawer_' + mtId)) {
+            destContainer.removeChild(document.getElementById('drawer_' + mtId));
+
+        }
+    }
+
+    function g_getFTTypesDrawer(containerId) {
+        var container = document.getElementById(containerId);
+        var ftIdArr = container.attributes['ftidlist'].value.split(',');
+        var mtId = container.attributes['mtid'].value;
+
+        var div = document.createElement('div');
+        div.setAttribute('id', 'drawer_' + mtId);
+        div.setAttribute('style', 'display: none; z-index=10000;  background-color: #F0F0F0; color: black; font-size: 10px; position: relative; top: -4px; padding: 4px;');
+        div.setAttribute('class', 'g-drawer');
+
+        for (i = 0; i < ftIdArr.length; ++i) {
+            if (ftIdArr[i] == '')
+                continue;
+
+            var divInner = document.createElement('div');
+            divInner.setAttribute('style', 'cursor: pointer;');
+            divInner.setAttribute('onclick', 'g_FTItemClicked(\'' + containerId + '\',\'' + mtId + '\',\'' + ftIdArr[i] + '\');');
+            divInner.innerText = ftMap[ftIdArr[i]];
+
+            div.appendChild(divInner);
+        }
+
+        return div;
+    }
+
+
+    function g_FTItemClicked(containerId, mtId, ftId) {
+        g_setFTCheckboxState('none', mtId);
+
+        var drawer = document.getElementById('drawer_' + mtId);
+        var parent = drawer.parentNode;
+        parent.removeChild(drawer);
+
+        var container = document.getElementById(containerId);
+        container.setAttribute('currftid', ftId);
+
+        g_ftSelectionClicked(document.getElementById('ftActionCheckBox_' + mtId));
+    }
+
+    /**
+     * none, partial, full
+     */
+    function g_setFTCheckboxState(state, mtId) {
+        var el = document.getElementById('ftActionCheckBox_' + mtId);
+        var cs = '';
+        if (state == 'full')
+            cs = ' g-selectbox-selected';
+        else if (state == 'partial')
+            cs = ' g-selectbox-partial';
+
+        el.attributes['class'].value = 'g-selectbox-inner ' + cs;
+    }
+
+    function g_toggleFTCheckboxState(selectBox) {
+        var el = selectBox;
+        var cs = el.attributes['class'].value;
+        var mtId = el.attributes['mtid'].value;
+
+        if (cs.indexOf('g-selectbox-selected') > -1 || cs.indexOf('g-selectbox-partial') > -1)
+            g_setFTCheckboxState('none', mtId)
+        else
+            g_setFTCheckboxState('full', mtId)
+    }
+
+    function g_getFTCheckboxState(selectBox) {
+        var el = selectBox;
+        var cs = el.attributes['class'].value;
+        var mtId = el.attributes['mtid'].value;
+
+        if (cs.indexOf('g-selectbox-selected') > -1)
+            return 'full';
+        else if (cs.indexOf('g-selectbox-partial') > -1)
+            return 'partial';
+        else
+            return 'none';
+    }
+
+    function g_ftSelectionClicked(sender) {
+        var state_first = g_getFTCheckboxState(sender);
+
+        g_toggleFTCheckboxState(sender);
+
+        var mtId = sender.attributes['mtid'].value;
+        var container = document.getElementById('ftActionContainerId_' + mtId);
+        var currFtId = container.attributes['currftid'].value;
+
+        if (!mtId || mtId < 1)
+            return;
+        if (!currFtId || currFtId < 1) {
+            var state = g_getFTCheckboxState(sender);
+            if ((state_first == 'full' || state_first == 'partial') && state == 'none') {
+                var arr = g_deselectAllfoodTypes(mtId);
+                previousSelectedMap[mtId] = arr;
+            }
+
+            return;
+        }
+        g_deselectAllfoodTypes(mtId);
+
+        var state = g_getFTCheckboxState(sender);
+
+        if (state_first == 'none' && mtId > 0 && currFtId > 0)
+            g_selectAllfoodTypes(mtId, currFtId);
+
+        if ((state_first == 'full' || state_first == 'partial') && state == 'none') {
+            g_deselectAllfoodTypes(mtId);
+        }
+    }
+
+    function g_selectFoodTypeDirectly(sender) {
+        var ftId = sender.attributes['foodtypeid'].value;
+        var mtId = sender.attributes['mealtypeid'].value;
+
+        if (!mtId || mtId < 1)
+            return;
+        if (!ftId || ftId < 1)
+            return;
+
+        var mainBox = document.getElementById('ftActionCheckBox_' + mtId);
+        var form = document.getElementById('resFinalform');
+        var elements = form.elements;
+
+        var fullChecked = true;
+        var partialChecked = false;
+
+        for (i = 0; i < elements.length; ++i) {
+            var el = elements[i];
+            if (el.type == "checkbox") {
+                if (el.attributes['mealTypeId'] == null ||
+                    el.attributes['foodTypeId'] == null)
+                    continue;
+                var mtIdAtt = el.attributes['mealTypeId'].value;
+                var ftIdAtt = el.attributes['foodTypeId'].value;
+                if (mtIdAtt == mtId &&
+                    ftIdAtt == ftId) {
+                    if (el.checked)
+                        partialChecked = true;
+                    else
+                        fullChecked = false;
+                }
+            }
+        }
+
+        if (fullChecked)
+            g_setFTCheckboxState('full', mtId);
+        else if (partialChecked)
+            g_setFTCheckboxState('partial', mtId);
+        else
+            g_setFTCheckboxState('none', mtId);
+    }
+
+    function g_checkTickInContainer(mtId) {
+        var form = document.getElementById('resFinalform');
+        var elements = form.elements;
+
+        var fullChecked = true;
+        var partialChecked = false;
+
+        for (i = 0; i < elements.length; ++i) {
+            var el = elements[i];
+            if (el.type == "checkbox") {
+                if (el.attributes['mealTypeId'] == null ||
+                    el.attributes['foodTypeId'] == null)
+                    continue;
+                var mtIdAtt = el.attributes['mealTypeId'].value;
+                if (mtIdAtt == mtId) {
+                    if (el.checked)
+                        partialChecked = true;
+                    else
+                        fullChecked = false;
+                }
+            }
+        }
+
+        if (fullChecked)
+            g_setFTCheckboxState('full', mtId);
+        else if (partialChecked)
+            g_setFTCheckboxState('partial', mtId);
+        else
+            g_setFTCheckboxState('none', mtId);
+    }
+
+    function g_selectAllfoodTypes(mtId, ftId) {
+        var form = document.getElementById('resFinalform');
+        var elements = form.elements;
+        var elArr = [];
+        for (i = 0; i < elements.length; ++i) {
+            var el = elements[i];
+            if (el.type == "checkbox") {
+                if (el.attributes['mealTypeId'] == null ||
+                    el.attributes['foodTypeId'] == null)
+                    continue;
+                var mtIdAtt = el.attributes['mealTypeId'].value;
+                var ftIdAtt = el.attributes['foodTypeId'].value;
+                if (!el.checked && mtIdAtt == mtId && ftIdAtt == ftId) {
+                    elArr[elArr.length] = el;
+                    //el.click();
+                }
+            }
+        }
+        for (j = 0; j < elArr.length; ++j)
+            elArr[j].click();
+
+    }
+
+    function g_deselectAllfoodTypes(mtId) {
+        var effectedArr = [];
+        var form = document.getElementById('resFinalform');
+        var elements = form.elements;
+        var elArr = [];
+        for (i = 0; i < elements.length; ++i) {
+            var el = elements[i];
+            if (el.type == "checkbox") {
+                if (el.attributes['mealTypeId'] == null)
+                    continue;
+                var mtIdAtt = el.attributes['mealTypeId'].value;
+                if (mtIdAtt == mtId && el.checked) {
+                    elArr[elArr.length] = el;
+                    effectedArr[effectedArr.length] = el.attributes['id'].value;
+                    //el.click();
+                }
+            }
+        }
+        for (j = 0; j < elArr.length; ++j)
+            elArr[j].click();
+        return effectedArr;
+    }
+
+    function getElementLocation(ele) {
+        var top = 0;
+        var left = 0;
+        var bottom = 0;
+        var right = 0;
+
+        while (ele.tagName != "BODY") {
+            top += ele.offsetTop;
+            left += ele.offsetLeft;
+            ele = ele.offsetParent;
+        }
+        bottom = top + getElementHeight(ele);
+        right = left + getElementWidth(ele);
+        return {top: top, left: left, right: right, bottom: bottom};
+    }
+
+    function getElementWidth(ele) {
+        if (typeof ele.clip !== "undefined") {
+            return ele.clip.width;
+        } else {
+            if (ele.style.pixelWidth) {
+                return ele.style.pixelWidth;
+            } else {
+                return ele.offsetWidth;
+            }
+        }
+    }
+
+    function getElementHeight(ele) {
+        if (typeof ele.clip !== "undefined") {
+            return ele.clip.height;
+        } else {
+            if (ele.style.pixelHeight) {
+                return ele.style.pixelHeight;
+            } else {
+                return ele.offsetHeight;
+            }
+        }
+    }
+
+    $(document).ready(function () {
+        $('#selfId > option').each(function () {
+            if ($(this).val() == "") {
+                $(this).prop("disabled", true);
+            }
+        });
+    });
+
+</script>
+                        </div>
+                    </div>
+                        
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center"
+                 style="width: 100%; background-color:#e1e1e1;color: #333333;">
+                
+                
+                
+                
+                    
+                
+                <div class="dab-copyright2">
+                    <a style="padding:0px 0px 2px 2px; margin:0 4px ; line-height:26px; float:right;"
+                       onclick="displayCreatorSiteWindows()"
+                       href="">
+                            
+                        داده کاوان اندیشه برتر
+                    </a>
+                </div>
+
+                <div class="text-center">
+                    نسخه
+                    69
+                    <a id="popover-git" style="color: #333333;" href="#"><span class="far fa-lg fa-question-circle"
+                                                                               style="vertical-align: middle;"></span></a>
+                    <div class="webui-popover-content text-center">
+                        
+                        
+                        
+                            
+                        
+                        DE
+
+                        07e10a5e
+                        261101124650
+                    </div>
+                </div>
+
+                <div class="dab-copyright3">
+                    <a style="padding:0px 0px 2px 2px; margin:0 4px ; line-height:26px; float:left;"
+                       onclick="displayOrganSiteWindows()"
+                       href="">
+                        دانشگاه ملی ارومیه
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        yourClock();
+    </script>
+    <script type="text/javascript">
+        function setUserMessageIdValue(val) {
+            document.getElementById('userMessageId').value = val;
+        }
+
+        function viewSnippetButtons() {
+            return {
+
+                'بستن': function () {
+                    viewSnippetCancelButton();
+                }
+            }
+        }
+
+        function viewSnippetCancelButton() {
+            jQuery('#viewMessageSnippetDialog').dialog('close');
+        }
+
+        function viewHelpButtons() {
+            return {
+
+                'بستن': function () {
+                    viewHelpCancelButton();
+                }
+            }
+        }
+
+        function viewHelpCancelButton() {
+            jQuery('#viewHelpDialog').dialog('close');
+        }
+
+        function moreUrl() {
+            window.location = '/messaging/inbox.rose';
+        }
+
+        function displayCreatorSiteWindows() {
+            window.open('http://www.dadekavan.ir' + "", "menubar=1,resizable=1,width=2048,height=750");
+        }
+
+        function displayOrganSiteWindows() {
+            window.open('http://www.urmia.ac.ir' + "", "menubar=1,resizable=1,width=2048,height=750");
+        }
+
+    </script>
+    <script type="text/javascript">
+
+        jQuery(document).ready(function () {
+            jQuery.ajax("/messaging/inboxStatusParams.rose", {
+                type: "GET",
+                dataType: "text",
+                success: function (data) {
+                    var result = jQuery.parseJSON(data);
+                    if (result.newMessagesCount != null && result.newMessagesCount > 0) {
+                        document.getElementById("messages_noti_bubble_id").innerText = result.newMessagesCount;
+                        document.getElementById("envelop_img_id").src = '/images/icon/yellow-envelop.png';
+                    } else {
+                        jQuery('#messages_noti_bubble_id').hide();
+                    }
+                    if (result.forceRead) {
+                        openGeneralAjaxDialog('/messaging/snippetMessageList.rose', 'پیام های دریافتی');
+                    }
+                }
+            });
+        });
+
+    </script>
+    <script type="text/javascript">
+        var generalAjaxDialog = null;
+        var generalStaticDialog = null;
+
+        function openGeneralAjaxDialog(url, title) {
+            generalAjaxDialog = jQuery('#generalAjaxDialogFrame').appendTo('body')
+                .html('<div id="generalAjaxDialogBodyDiv" class="text-center" style="padding: 10px; direction: rtl"></div>')
+                .dialog({
+                    modal: true,
+                    title: title,
+                    zIndex: 10000,
+                    autoOpen: false,
+                    width: 850,
+                    height: 500,
+                    resizable: true,
+                    close: function (event, ui) {
+                        document.getElementById('generalAjaxDialogBodyDiv').innerHTML = '<img src="/images/ajax-loader.gif"/>';
+                        jQuery(this).dialog("destroy");
+                    }
+                });
+            generalAjaxDialog.dialog("open");
+            document.getElementById('generalAjaxDialogBodyDiv').innerHTML = '<img src="/images/ajax-loader.gif"/>';
+
+            jQuery('#generalAjaxDialogBodyDiv').load(url);
+        }
+
+        function refreshGeneralAjaxDialog(url) {
+            document.getElementById('generalAjaxDialogBodyDiv').innerHTML = '<img src="/images/ajax-loader.gif"/>';
+
+            jQuery('#generalAjaxDialogBodyDiv').load(url);
+        }
+
+        function closeGeneralAjaxDialog() {
+            generalAjaxDialog.dialog("close");
+        }
+
+        function openGeneralStaticDialog(html, title, width, height) {
+            generalStaticDialog = jQuery('#generalStaticDialogFrame').appendTo('body')
+                .html('<div id="generalStaticDialogBodyDiv" class="text-center" style="padding: 10px; direction: rtl"></div>')
+                .dialog({
+                    modal: true,
+                    title: title,
+                    zIndex: 10000,
+                    autoOpen: false,
+                    width: width,
+                    height: height,
+                    resizable: true,
+                    close: function (event, ui) {
+                        document.getElementById('generalStaticDialogBodyDiv').innerHTML = '<img src="/images/ajax-loader.gif"/>';
+                        jQuery(this).dialog("destroy");
+                    }
+                });
+            generalStaticDialog.dialog("open");
+            document.getElementById('generalStaticDialogBodyDiv').innerHTML = html;
+        }
+
+        function closeGeneralStaticDialog() {
+            if (generalStaticDialog != null) {
+                generalStaticDialog.dialog("close");
+            }
+        }
+
+        var generalStaticDialog2 = null;
+
+        function openGeneralStaticDialog2(html, title, width, height) {
+            generalStaticDialog2 = jQuery('#generalStaticDialogFrame2').appendTo('body')
+                .html('<div id="generalStaticDialogBodyDiv2" class="text-center" style="padding: 10px; direction: rtl"></div>')
+                .dialog({
+                    modal: true,
+                    title: title,
+                    zIndex: 20000,
+                    autoOpen: false,
+                    width: width,
+                    height: height,
+                    resizable: true,
+                    close: function (event, ui) {
+                        document.getElementById('generalStaticDialogBodyDiv2').innerHTML = '<img src="/images/ajax-loader.gif"/>';
+                        jQuery(this).dialog("destroy");
+                    }
+                });
+            generalStaticDialog2.dialog("open");
+            document.getElementById('generalStaticDialogBodyDiv2').innerHTML = html;
+        }
+
+        function closeGeneralStaticDialog2() {
+            if (generalStaticDialog2 != null) {
+                generalStaticDialog2.dialog("close");
+            }
+        }
+
+        jQuery(function () {
+            jQuery('#mega-menu-1').click(function () {
+                var subNav = $('.sub', this);
+                jQuery(this).removeClass('mega-hover');
+                jQuery(subNav).hide();
+            });
+        });
+
+        function showGeneralMessageAsModalDialog(msg, titleText, color, width, height) {
+            $('<div></div>').appendTo('body')
+                .html('<div><span style="color:#' + color + '; font-family: tahoma, arial; font-size: 13px;">' + msg + '</span></div>')
+                .dialog({
+                    modal: true, title: titleText, zIndex: 10000, autoOpen: true,
+                    width: width,
+                    height: height,
+                    resizable: true,
+                    buttons: {
+            بستن:
+
+            function () {
+                $(this).dialog("close");
+            }
+        },
+            close: function (event, ui) {
+                $(this).dialog("close");
+            }
+        })
+            ;
+        }
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#user_username').click(function () {
+                $('#user_dropdown').toggleClass('d-none');
+            })
+            $('#popover-git').webuiPopover({
+                trigger: 'hover',
+                width: 250,
+                style: 'inverse',
+                delay: {show: null, hide: null}
+            });
+        })
+    </script>
+    </body>
+
+
+<div id="generalAjaxDialogFrame"></div>
+<div id="generalStaticDialogFrame"></div>
+<div id="generalStaticDialogFrame2"></div>
+<script type="text/javascript" src="/styles/newui/js/webui-popover-master/final/jquery.webui-popover.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var pressed = false;
+        var start = undefined;
+        var startX, startWidth;
+
+        $("table th").mousedown(function (e) {
+            start = $(this);
+            pressed = true;
+            startX = e.pageX;
+            startWidth = $(this).width();
+            $(start).addClass("resizing");
+            $(start).addClass("noSelect");
+        });
+
+        $(document).mousemove(function (e) {
+            if (pressed) {
+                $(start).width(startWidth + (startX - e.pageX));
+            }
+        });
+
+        $(document).mouseup(function () {
+            if (pressed) {
+                $(start).removeClass("resizing");
+                $(start).removeClass("noSelect");
+                pressed = false;
+            }
+        });
+    });
+</script>
+</html>

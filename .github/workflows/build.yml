@@ -1,0 +1,74 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.9"
+
+      - name: Unit tests
+        run: gradle :app:testDebugUnitTest --no-daemon
+
+      - name: Decode release key (only when the secrets exist)
+        id: key
+        env:
+          KEYSTORE_B64: ${{ secrets.UNIMEAL_KEYSTORE_B64 }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.jks"
+            echo "signed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "signed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build release APK (signed)
+        if: steps.key.outputs.signed == 'true'
+        env:
+          UNIMEAL_KEYSTORE_FILE: ${{ runner.temp }}/release.jks
+          UNIMEAL_KEYSTORE_PASSWORD: ${{ secrets.UNIMEAL_KEYSTORE_PASSWORD }}
+          UNIMEAL_KEY_ALIAS: ${{ secrets.UNIMEAL_KEY_ALIAS }}
+          UNIMEAL_KEY_PASSWORD: ${{ secrets.UNIMEAL_KEY_PASSWORD }}
+        run: gradle :app:assembleRelease --no-daemon
+
+      - name: Build debug APK (no release key available)
+        if: steps.key.outputs.signed != 'true'
+        run: gradle :app:assembleDebug --no-daemon
+
+      - name: Collect APK
+        run: |
+          mkdir -p dist
+          if [ "${{ steps.key.outputs.signed }}" = "true" ]; then
+            cp app/build/outputs/apk/release/app-release.apk "dist/UniMeal-${GITHUB_REF_NAME}.apk"
+          else
+            cp app/build/outputs/apk/debug/app-debug.apk "dist/UniMeal-${GITHUB_REF_NAME}-debug.apk"
+          fi
+          (cd dist && sha256sum *.apk > SHA256SUMS.txt)
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: UniMeal-apk
+          path: dist/
+
+      # Only a properly signed build is ever published as a release.
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/v') && steps.key.outputs.signed == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          generate_release_notes: true

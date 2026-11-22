@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UniMeal</string>
+    <string name="ch_run">Running</string>
+    <string name="ch_result">Results and problems</string>
+    <string name="running">Reserving your meals…</string>
+    <string name="waiting">Waiting for the menu to open…</string>
+
+    <string name="st_idle">Ready. Press start when the reservation opens.</string>
+    <string name="st_checking">Checking SAMAD…</string>
+    <string name="st_waiting">Nothing to reserve yet. Will check again in a minute.</string>
+    <string name="st_done">Done. Everything that is available is reserved.</string>
+    <string name="st_preview_done">Preview finished. Nothing was reserved. Turn off “Preview only” to reserve for real.</string>
+    <string name="st_login">Sign-in failed. Check your student number and password.</string>
+    <string name="st_cert">The university site\'s certificate is not trusted. Stopped to protect your password.</string>
+    <string name="st_net">No connection to SAMAD. Stopped.</string>
+    <string name="st_odd">SAMAD returned a page the app does not understand. Stopped.</string>
+    <string name="st_self">Your SAMAD is not set to the Veterinary Taak self. Pick it once on the website, then start again.</string>
+    <string name="st_poor">Not enough credit. Add credit, then start again.</string>
+    <string name="st_over">The spending limit was reached.</string>
+    <string name="st_stopped">Stopped.</string>
+
+    <string name="start">Start</string>
+    <string name="start_preview">Start (preview)</string>
+    <string name="stop">Stop</string>
+    <string name="credit">Credit: %1$s rial</string>
+    <string name="account">SAMAD account</string>
+    <string name="student_no">Student number</string>
+    <string name="password">Password</string>
+    <string name="show">Show</string>
+    <string name="hide">Hide</string>
+    <string name="save">Save</string>
+    <string name="privacy">Stored encrypted on this phone only and sent only to nds.urmia.ac.ir. No server, no analytics.</string>
+    <string name="meals">What to reserve</string>
+    <string name="lunch">Lunch</string>
+    <string name="dinner">Dinner</string>
+    <string name="wait_next">Wait for next week\'s menu</string>
+    <string name="wait_next_hint">Keep checking until the next week opens, then reserve it</string>
+    <string name="preview">Preview only</string>
+    <string name="preview_hint">Look and report what would be reserved, without reserving</string>
+    <string name="spend_limit">Spending limit per run (rial)</string>
+    <string name="spend_hint">Empty = no limit</string>
+    <string name="log">Log</string>
+
+    <string name="log_net">Network problem, will retry</string>
+    <string name="log_pass">Pass finished: %1$d already reserved, %2$d new</string>
+    <string name="n_login_title">UniMeal: sign-in failed</string>
+    <string name="n_login_text">Check your student number and password, then start again. It stopped to avoid locking your account.</string>
+    <string name="n_cert_title">UniMeal: insecure connection</string>
+    <string name="n_cert_text">The university site\'s certificate is not trusted, so nothing was sent. Try another network.</string>
+    <string name="n_odd_title">UniMeal: unexpected page</string>
+    <string name="n_odd_text">SAMAD returned a page the app does not understand. Reserve manually and report this.</string>
+    <string name="n_self_title">UniMeal: wrong self</string>
+    <string name="n_self_text">Your SAMAD is not set to the Veterinary Taak self. Pick it on the website once, then start again.</string>
+    <string name="n_net_title">UniMeal: no connection</string>
+    <string name="n_net_text">Could not reach SAMAD for a long time. Stopped.</string>
+    <string name="n_reserved_title">UniMeal: reserved</string>
+    <string name="n_poor_title">UniMeal: not enough credit</string>
+    <string name="n_poor_text">Could not reserve: %1$s. Add credit and start again.</string>
+    <string name="n_over_title">UniMeal: spending limit reached</string>
+    <string name="n_over_text">Not reserved because of the limit: %1$s</string>
+    <string name="n_preview_title">UniMeal: preview</string>
+    <string name="n_preview_none">Nothing needs reserving right now.</string>
+    <string name="n_failed_title">UniMeal: could not reserve</string>
+    <string name="n_failed_text">The server did not save: %1$s. Probably sold out. Check manually.</string>
+    <string name="n_done_title">UniMeal: done</string>
+    <string name="n_done_text">Everything that is available is reserved.</string>
+    <string name="n_sold_out">Not available (sold out or closed): %1$s</string>
+    <string name="n_timeout_title">UniMeal: stopped</string>
+    <string name="n_timeout_text">Stopped after 12 hours to save battery. Press start again if needed.</string>
+</resources>
