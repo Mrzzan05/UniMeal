@@ -44,31 +44,50 @@ private object Crypto {
     }
 }
 
-data class Settings(
+data class Account(
+    val id: String = java.util.UUID.randomUUID().toString(),
+    val label: String = "",
     val username: String = "",
     val password: String = "",
+    val enabled: Boolean = true,
+) {
+    val usable: Boolean get() = enabled && username.isNotBlank() && password.isNotEmpty()
+    val shownName: String get() = label.ifBlank { username.takeLast(3).let { "…$it" } }
+}
+
+data class Settings(
+    val accounts: List<Account> = emptyList(),
     val lunch: Boolean = true,
     val dinner: Boolean = true,
     val selfId: String = "12",
     /** Look and report, but never confirm a reservation. On until the user turns it off. */
     val preview: Boolean = true,
     val waitNextWeek: Boolean = true,
-    /** Most rials one run may spend, 0 = no limit. */
+    /** Most rials one run may spend per account, 0 = no limit. */
     val maxSpend: Long = 0L,
 ) {
-    val hasLogin: Boolean get() = username.isNotBlank() && password.isNotEmpty()
+    val usableAccounts: List<Account> get() = accounts.filter { it.usable }
     val meals: Set<Meal> get() = buildSet { if (lunch) add(Meal.LUNCH); if (dinner) add(Meal.DINNER) }
 }
 
-/** Encrypted settings file. The password only exists here (encrypted) and in memory while a run is active. */
+/** Encrypted settings file. Passwords only exist here (encrypted) and in memory while a run is active. */
 class Vault(ctx: Context) {
     private val file = File(ctx.filesDir, "unimeal.dat")
 
     fun load(): Settings = try {
         if (!file.exists()) Settings() else {
             val j = JSONObject(String(Crypto.decrypt(file.readBytes()), Charsets.UTF_8))
+            val list = ArrayList<Account>()
+            j.optJSONArray("a")?.let { arr ->
+                for (i in 0 until arr.length()) {
+                    val a = arr.getJSONObject(i)
+                    list += Account(a.optString("i"), a.optString("n"), a.optString("u"), a.optString("p"), a.optBoolean("e", true))
+                }
+            }
+            // Version 0.1.0 stored a single account.
+            if (list.isEmpty() && j.optString("u").isNotBlank()) list += Account(label = "", username = j.optString("u"), password = j.optString("p"))
             Settings(
-                j.optString("u"), j.optString("p"), j.optBoolean("l", true), j.optBoolean("d", true),
+                list, j.optBoolean("l", true), j.optBoolean("d", true),
                 j.optString("s", "12"), j.optBoolean("pv", true), j.optBoolean("w", true), j.optLong("m", 0L),
             )
         }
@@ -76,7 +95,9 @@ class Vault(ctx: Context) {
 
     fun save(s: Settings) {
         try {
-            val j = JSONObject().put("u", s.username).put("p", s.password).put("l", s.lunch).put("d", s.dinner)
+            val arr = org.json.JSONArray()
+            for (a in s.accounts) arr.put(JSONObject().put("i", a.id).put("n", a.label).put("u", a.username).put("p", a.password).put("e", a.enabled))
+            val j = JSONObject().put("a", arr).put("l", s.lunch).put("d", s.dinner)
                 .put("s", s.selfId).put("pv", s.preview).put("w", s.waitNextWeek).put("m", s.maxSpend)
             val tmp = File(file.parentFile, "unimeal.tmp")
             tmp.writeBytes(Crypto.encrypt(j.toString().toByteArray(Charsets.UTF_8)))

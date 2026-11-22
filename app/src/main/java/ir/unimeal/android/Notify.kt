@@ -36,13 +36,28 @@ object Notify {
         if (canPost(ctx)) NotificationManagerCompat.from(ctx).notify(ID_RUN, running(ctx, text))
     }
 
-    /** Results the user must see: reserved, problems, finished. Never contains a password. */
-    fun result(ctx: Context, title: String, text: String) {
+    fun siteIntent(ctx: Context): PendingIntent = PendingIntent.getActivity(
+        ctx, 1, Intent(Intent.ACTION_VIEW, android.net.Uri.parse(Urls.PANEL)),
+        PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
+    )
+
+    /**
+     * Results the user must see: reserved, problems, finished. Never contains a password.
+     * With [openSite] a tap opens the SAMAD reservation page, so the user can finish by hand.
+     */
+    fun result(ctx: Context, title: String, text: String, openSite: Boolean = false) {
         if (!canPost(ctx)) return
-        val n = NotificationCompat.Builder(ctx, CH_RESULT).setSmallIcon(R.drawable.ic_stat)
+        val b = NotificationCompat.Builder(ctx, CH_RESULT).setSmallIcon(R.drawable.ic_stat)
             .setContentTitle(title).setContentText(text).setStyle(NotificationCompat.BigTextStyle().bigText(text))
-            .setAutoCancel(true).setContentIntent(open(ctx)).setPriority(NotificationCompat.PRIORITY_HIGH).build()
-        NotificationManagerCompat.from(ctx).notify(next++, n)
+            .setAutoCancel(true).setPriority(NotificationCompat.PRIORITY_HIGH)
+        if (openSite) {
+            b.setContentIntent(siteIntent(ctx))
+            b.addAction(0, ctx.getString(R.string.open_samad), siteIntent(ctx))
+            b.addAction(0, ctx.getString(R.string.open_app), open(ctx))
+        } else {
+            b.setContentIntent(open(ctx))
+        }
+        NotificationManagerCompat.from(ctx).notify(next++, b.build())
     }
 
     private fun canPost(ctx: Context) =

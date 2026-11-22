@@ -7,6 +7,9 @@ You press **Start**. UniMeal signs in, reads the week, reserves the missing lunc
 - **Preview only** is on by default: the first run just reports what it *would* reserve.
 - **Wait for next week's menu** keeps checking (every 40–70 s, up to 12 h) until the next week opens.
 - Optional spending limit per run.
+- Several accounts (yours first, then friends who asked you), each saved only when you press Save.
+- A Log tab shows every step (no passwords) to make problems easy to diagnose.
+- Notifications that need you to finish by hand have an **Open SAMAD** button.
 
 ## Privacy and security
 - Your student number and password are stored encrypted (AES-256-GCM, key in the Android Keystore) on this phone only, and sent only to `nds.urmia.ac.ir` over HTTPS.

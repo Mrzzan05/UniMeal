@@ -40,10 +40,9 @@
     <string name="preview_hint">Look and report what would be reserved, without reserving</string>
     <string name="spend_limit">Spending limit per run (rial)</string>
     <string name="spend_hint">Empty = no limit</string>
-    <string name="log">Log</string>
-
+    
     <string name="log_net">Network problem, will retry</string>
-    <string name="log_pass">Pass finished: %1$d already reserved, %2$d new</string>
+    <string name="log_pass">%1$s: pass finished, %2$d already reserved, %3$d new</string>
     <string name="n_login_title">UniMeal: sign-in failed</string>
     <string name="n_login_text">Check your student number and password, then start again. It stopped to avoid locking your account.</string>
     <string name="n_cert_title">UniMeal: insecure connection</string>
@@ -68,4 +67,33 @@
     <string name="n_sold_out">Not available (sold out or closed): %1$s</string>
     <string name="n_timeout_title">UniMeal: stopped</string>
     <string name="n_timeout_text">Stopped after 12 hours to save battery. Press start again if needed.</string>
+    <string name="tab_home">Home</string>
+    <string name="tab_accounts">Accounts</string>
+    <string name="tab_log">Log</string>
+    <string name="st_failed">The server did not save a reservation (probably sold out). Check SAMAD.</string>
+    <string name="as_idle">Ready</string>
+    <string name="as_checking">Checking…</string>
+    <string name="as_waiting">Waiting</string>
+    <string name="as_done">Done</string>
+    <string name="as_preview">Preview done</string>
+    <string name="as_login">Wrong password</string>
+    <string name="as_poor">Low credit</string>
+    <string name="as_problem">Needs attention</string>
+    <string name="open_samad">Open SAMAD</string>
+    <string name="open_app">Open UniMeal</string>
+    <string name="need_account">Add your SAMAD account first.</string>
+    <string name="add_account">Add account</string>
+    <string name="accounts_hint">The first enabled account is reserved first, then the others (for example friends who asked you). Nothing is stored until you press Save.</string>
+    <string name="account_main">My account</string>
+    <string name="account_n">Account %1$d</string>
+    <string name="name_optional">Name (optional)</string>
+    <string name="remove">Remove</string>
+    <string name="unsaved">Unsaved changes</string>
+    <string name="copy_log">Copy log</string>
+    <string name="clear_log">Clear</string>
+    <string name="log_hint">Shows every step. It never contains passwords. Send it to fix problems.</string>
+    <string name="log_empty">Nothing yet.</string>
+    <string name="log_start">Started: %1$d account(s), %2$s mode</string>
+    <string name="log_stopped">Stopped by you</string>
+    <string name="log_finished">finished</string>
 </resources>

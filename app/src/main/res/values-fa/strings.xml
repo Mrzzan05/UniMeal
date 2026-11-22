@@ -40,10 +40,9 @@
     <string name="preview_hint">فقط نشان بده چه چیزی رزرو می‌شد، بدون رزرو</string>
     <string name="spend_limit">سقف هزینه در هر اجرا (ریال)</string>
     <string name="spend_hint">خالی = بدون سقف</string>
-    <string name="log">گزارش</string>
-
+    
     <string name="log_net">مشکل شبکه، دوباره تلاش می‌شود</string>
-    <string name="log_pass">بررسی تمام شد: %1$d از قبل رزرو، %2$d جدید</string>
+    <string name="log_pass">%1$s: بررسی تمام شد، %2$d از قبل رزرو، %3$d جدید</string>
     <string name="n_login_title">UniMeal: ورود ناموفق</string>
     <string name="n_login_text">شماره دانشجویی و رمز را بررسی کنید و دوباره شروع کنید. برای قفل نشدن حساب متوقف شد.</string>
     <string name="n_cert_title">UniMeal: اتصال ناامن</string>
@@ -68,4 +67,33 @@
     <string name="n_sold_out">موجود نبود (تمام شده یا بسته): %1$s</string>
     <string name="n_timeout_title">UniMeal: متوقف شد</string>
     <string name="n_timeout_text">برای صرفه‌جویی باتری بعد از ۱۲ ساعت متوقف شد. در صورت نیاز دوباره شروع کنید.</string>
+    <string name="tab_home">خانه</string>
+    <string name="tab_accounts">حساب‌ها</string>
+    <string name="tab_log">گزارش</string>
+    <string name="st_failed">سرور یک رزرو را ذخیره نکرد (احتمالاً تمام شده). سامد را بررسی کنید.</string>
+    <string name="as_idle">آماده</string>
+    <string name="as_checking">در حال بررسی…</string>
+    <string name="as_waiting">منتظر</string>
+    <string name="as_done">تمام شد</string>
+    <string name="as_preview">پیش‌نمایش تمام شد</string>
+    <string name="as_login">رمز اشتباه</string>
+    <string name="as_poor">اعتبار کم</string>
+    <string name="as_problem">نیاز به بررسی</string>
+    <string name="open_samad">باز کردن سامد</string>
+    <string name="open_app">باز کردن UniMeal</string>
+    <string name="need_account">اول حساب سامد خود را اضافه کنید.</string>
+    <string name="add_account">افزودن حساب</string>
+    <string name="accounts_hint">اولین حساب فعال اول رزرو می‌شود، بعد بقیه (مثلاً دوستانی که خواسته‌اند). تا «ذخیره» نزنید چیزی ذخیره نمی‌شود.</string>
+    <string name="account_main">حساب من</string>
+    <string name="account_n">حساب %1$d</string>
+    <string name="name_optional">نام (اختیاری)</string>
+    <string name="remove">حذف</string>
+    <string name="unsaved">تغییرات ذخیره نشده</string>
+    <string name="copy_log">کپی گزارش</string>
+    <string name="clear_log">پاک کردن</string>
+    <string name="log_hint">همه‌ی مراحل را نشان می‌دهد و هرگز رمز ندارد. برای رفع مشکل بفرستید.</string>
+    <string name="log_empty">هنوز چیزی نیست.</string>
+    <string name="log_start">شروع شد: %1$d حساب، حالت %2$s</string>
+    <string name="log_stopped">توسط شما متوقف شد</string>
+    <string name="log_finished">تمام شد</string>
 </resources>

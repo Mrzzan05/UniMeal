@@ -37,6 +37,8 @@ data class Outcome(
     val alreadyReserved: Int = 0,
     /** The first week without a published menu was reached: more can appear later. */
     val waiting: Boolean = false,
+    /** How many weeks (starting with the current one) already have a menu for the wanted meals. */
+    val weeksPublished: Int = 0,
     val credit: Long? = null,
     val serverMessages: List<String> = emptyList(),
 )
@@ -91,12 +93,22 @@ class Runner(
         val messages = ArrayList<String>()
         var already = 0
         var waiting = false
+        var published = 0
         var credit: Long? = null
         try {
             login()
+            log("signed in")
             var page = reservePage()
+            log("page: self ${page.selfId}, credit ${page.credit}, ${page.rows.size} options")
             if (page.selfId != selfId) {
-                return Outcome(Status.WRONG_SELF, detail = page.selfId, credit = page.credit)
+                if (page.selfOptions.none { it.first == selfId }) {
+                    return Outcome(Status.WRONG_SELF, detail = page.selfId, credit = page.credit)
+                }
+                // Same as picking the self in the drop-down on the website.
+                log("switching self ${page.selfId} -> $selfId")
+                page = parseOrRefetch(http.post(Urls.RESERVE, SamadForm.build(page, "showPanel", selfId = selfId)))
+                if (page.selfId != selfId) return Outcome(Status.WRONG_SELF, detail = page.selfId, credit = page.credit)
+                log("page: self ${page.selfId}, ${page.rows.size} options")
             }
             var spent = 0L
             for (week in 0 until maxWeeks) {
@@ -110,7 +122,9 @@ class Runner(
                 unavailable += plan.unavailable.map { it.title }
                 poor += plan.notEnoughCredit.map { it.first.title }
                 over += plan.overBudget.map { it.first.title }
-                if (plan.menuNotPublished) { waiting = true; break }
+                log("week ${week + 1}: reserved ${plan.alreadyReserved.size}, to reserve ${plan.toReserve.size}, closed ${plan.unavailable.size}, no credit ${plan.notEnoughCredit.size}")
+                if (plan.menuNotPublished) { waiting = true; log("week ${week + 1}: menu not published yet"); break }
+                published++
                 if (plan.toReserve.isNotEmpty()) {
                     if (preview) {
                         would += plan.toReserve.map { it.first.title + " — " + it.second.label }
@@ -136,7 +150,7 @@ class Runner(
             }
             return Outcome(
                 Status.OK, "", reserved, would, failed, poor.distinct(), over.distinct(), unavailable.distinct(),
-                already, waiting, credit, messages.distinct(),
+                already, waiting, published, credit, messages.distinct(),
             )
         } catch (e: LoginFailed) {
             return Outcome(Status.LOGIN_FAILED)
@@ -148,4 +162,36 @@ class Runner(
             return Outcome(Status.UNEXPECTED, e.message ?: "")
         }
     }
+}
+
+enum class Verdict { KEEP_GOING, DONE, PREVIEW_DONE, LOGIN, CERT, ODD, SELF, POOR, OVER, FAILED, NET }
+
+/**
+ * Decides after every pass whether one account is finished. Waiting for the next week ends as soon as
+ * a week appears that was not there at the first pass (and what it offers has been reserved).
+ */
+class AccountTracker(private val preview: Boolean, private val waitNext: Boolean) {
+    private var baseline: Int? = null
+    private var netFails = 0
+    private var badPasses = 0
+
+    fun next(o: Outcome): Verdict {
+        when (o.status) {
+            Status.LOGIN_FAILED -> return Verdict.LOGIN
+            Status.CERT_PROBLEM -> return Verdict.CERT
+            Status.UNEXPECTED -> return Verdict.ODD
+            Status.WRONG_SELF -> return Verdict.SELF
+            Status.NETWORK -> return if (++netFails >= MAX_NET_FAILS) Verdict.NET else Verdict.KEEP_GOING
+            Status.OK -> netFails = 0
+        }
+        val base = baseline ?: o.weeksPublished.also { baseline = it }
+        if (o.poor.isNotEmpty()) return Verdict.POOR
+        if (o.overBudget.isNotEmpty()) return Verdict.OVER
+        if (preview) return Verdict.PREVIEW_DONE
+        if (o.failed.isNotEmpty() && ++badPasses >= 5) return Verdict.FAILED
+        val keepWaiting = o.waiting && waitNext && o.weeksPublished <= base
+        return if (o.failed.isEmpty() && !keepWaiting) Verdict.DONE else Verdict.KEEP_GOING
+    }
+
+    private companion object { const val MAX_NET_FAILS = 20 }
 }

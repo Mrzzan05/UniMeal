@@ -21,7 +21,13 @@ class RunnerTest {
         val posts = ArrayList<Pair<String, List<Pair<String, String>>>>()
         var confirmed = false
         var cert = false
-        private fun page() = if (confirmed) after else before
+        var switchedTo: String? = null
+        var startSelf: String? = null
+        private fun page(): String {
+            val p = if (confirmed) after else before
+            val self = startSelf
+            return if (self != null && switchedTo == null) p.replace("value=\"12\" id=\"selfHiddenId\"", "value=\"$self\" id=\"selfHiddenId\"") else p
+        }
         override fun get(url: String): String {
             if (cert) throw CertProblem("bad chain")
             return when (url) {
@@ -33,6 +39,10 @@ class RunnerTest {
         override fun post(url: String, form: List<Pair<String, String>>): String {
             posts += url to form
             if (url == Urls.RESERVE) {
+                if (form.any { it.first == "method:showPanel" }) {
+                    switchedTo = form.first { it.first == "selectedSelfDefId" }.second
+                    return page()
+                }
                 if (form.any { it.first == "method:doReserve" }) confirmed = true
                 // The next week looks like the same page with another week start.
                 if (form.any { it.first == "method:showNextWeek" }) return page().replace("1795260092993", "1795864892993")
@@ -82,7 +92,22 @@ class RunnerTest {
         assertEquals(Status.CERT_PROBLEM, runner(h, false).pass().status)
     }
 
-    @Test fun otherSelfIsNeverReservedAt() {
+    @Test fun switchesToTheWantedSelfLikeTheDropDown() {
+        val h = Fake(reopen(full, 3), full).also { it.startSelf = "1" }
+        val o = runner(h, preview = false).pass()
+        assertEquals(Status.OK, o.status)
+        assertEquals("12", h.switchedTo)
+        assertEquals(1, o.reserved.size)
+    }
+
+    @Test fun countsPublishedWeeks() {
+        val o = runner(Fake(full, full), false, maxWeeks = 1).pass()
+        assertEquals(1, o.weeksPublished)
+        val l = runner(Fake(full, full), false, meals = setOf(Meal.LUNCH)).pass()
+        assertEquals(0, l.weeksPublished)
+    }
+
+    @Test fun unknownSelfIsNeverReservedAt() {
         val h = Fake(reopen(full, 3), full)
         val o = Runner(h, "u", "p", Wanted(setOf(Meal.DINNER)), "99", false, today).pass()
         assertEquals(Status.WRONG_SELF, o.status)
