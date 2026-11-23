@@ -40,6 +40,9 @@ class OkHttpHttp : Http {
         .writeTimeout(25, TimeUnit.SECONDS)
         .build()
 
+    /** Session cookies for the SAMAD host, to hand over to the in-app browser. */
+    fun cookies(): List<Cookie> = jar.loadForRequest("https://${Urls.HOST}/".toHttpUrl())
+
     override fun get(url: String): String = exec(Request.Builder().url(url).header("User-Agent", UA).get().build())
 
     override fun post(url: String, form: List<Pair<String, String>>): String {

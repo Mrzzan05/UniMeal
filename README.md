@@ -9,6 +9,7 @@ You press **Start**. UniMeal signs in, reads the week, reserves the missing lunc
 - Optional spending limit per run.
 - Several accounts (yours first, then friends who asked you), each saved only when you press Save.
 - A Log tab shows every step (no passwords) to make problems easy to diagnose.
+- Weekly reminder, dark theme, and awareness of lost internet.
 - Notifications that need you to finish by hand have an **Open SAMAD** button.
 
 ## Privacy and security

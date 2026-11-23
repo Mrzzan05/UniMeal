@@ -26,6 +26,8 @@ class ReserveService : Service() {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     private var job: Job? = null
     private var wake: PowerManager.WakeLock? = null
+    private var net: NetWatch? = null
+    private var pollMs = 60_000L
 
     override fun onBind(i: Intent?): IBinder? = null
 
@@ -48,6 +50,8 @@ class ReserveService : Service() {
         wake = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "UniMeal:run").apply { acquire(MAX_RUN_MS) }
         RunState.set { it.copy(running = true, line = RunState.R_CHECKING, acc = emptyMap(), wouldReserve = emptyList()) }
         RunState.log(getString(R.string.log_start, s.usableAccounts.size, if (s.preview) "preview" else "real"))
+        pollMs = s.pollSeconds.coerceIn(30, 600) * 1000L
+        net = NetWatch(this).also { it.start() }
         job = scope.launch { loop(s) }
         return START_NOT_STICKY
     }
@@ -65,11 +69,33 @@ class ReserveService : Service() {
         val notes = ArrayList<String>()
         var overall = RunState.R_DONE
         var site = false
+        var offlineLogged = false
 
         fun who(sl: Slot) = if (multi) sl.acc.shownName + ": " else ""
         fun status(sl: Slot, code: Int) = RunState.set { it.copy(acc = it.acc + (sl.acc.id to code)) }
 
         while (scope.isActive) {
+            if (System.currentTimeMillis() - started > MAX_RUN_MS) {
+                Notify.result(this, getString(R.string.n_timeout_title), getString(R.string.n_timeout_text))
+                RunState.log(getString(R.string.n_timeout_text))
+                return stopRun(RunState.R_STOPPED)
+            }
+            val nw = net
+            if (nw != null && !nw.online.value) {
+                RunState.set { it.copy(line = RunState.R_OFFLINE) }
+                if (!offlineLogged) {
+                    RunState.log(getString(if (nw.captive) R.string.log_captive else R.string.log_offline))
+                    offlineLogged = true
+                }
+                Notify.updateRunning(this, getString(R.string.st_offline_short))
+                nw.awaitOnline(pause())
+                continue
+            }
+            if (offlineLogged) {
+                RunState.log(getString(R.string.log_online))
+                offlineLogged = false
+                delay(2_000L)
+            }
             for ((idx, sl) in slots.filter { !it.done }.withIndex()) {
                 if (idx > 0) delay(2_000L + (Math.random() * 2_000L).toLong())
                 RunState.set { it.copy(line = RunState.R_CHECKING) }
@@ -114,7 +140,7 @@ class ReserveService : Service() {
                 sl.done = true
                 status(sl, code)
                 if (title.isNotEmpty()) {
-                    Notify.result(this, title, who(sl) + text, open)
+                    Notify.result(this, title, who(sl) + text, open, sl.acc.id)
                     if (overall == RunState.R_DONE || overall == RunState.R_PREVIEW_DONE) overall = code
                     RunState.log("$tag: " + getString(R.string.log_finished))
                 } else if (v == Verdict.PREVIEW_DONE) {
@@ -131,14 +157,9 @@ class ReserveService : Service() {
                 if (overall == RunState.R_PREVIEW_DONE) {
                     Notify.result(this, getString(R.string.n_preview_title), notes.joinToString("\n").ifBlank { getString(R.string.n_preview_none) })
                 } else if (overall == RunState.R_DONE) {
-                    Notify.result(this, getString(R.string.n_done_title), (listOf(getString(R.string.n_done_text)) + notes).joinToString("\n"), site)
+                    Notify.result(this, getString(R.string.n_done_title), (listOf(getString(R.string.n_done_text)) + notes).joinToString("\n"), site, slots.firstOrNull()?.acc?.id)
                 }
                 return stopRun(overall)
-            }
-            if (System.currentTimeMillis() - started > MAX_RUN_MS) {
-                Notify.result(this, getString(R.string.n_timeout_title), getString(R.string.n_timeout_text))
-                RunState.log(getString(R.string.n_timeout_text))
-                return stopRun(RunState.R_STOPPED)
             }
             RunState.set { it.copy(line = RunState.R_WAITING) }
             Notify.updateRunning(this, getString(R.string.waiting))
@@ -146,11 +167,12 @@ class ReserveService : Service() {
         }
     }
 
-    /** 40–70 s: quick enough to be early on Wednesday, slow enough not to hammer the university server. */
-    private fun pause(): Long = 40_000L + (Math.random() * 30_000L).toLong()
+    /** The chosen interval ±25 %: quick enough to be early on Wednesday, slow enough not to hammer the server. */
+    private fun pause(): Long = (pollMs * 0.75 + Math.random() * pollMs * 0.5).toLong()
 
     private fun stopRun(reason: Int) {
         job?.cancel(); job = null
+        net?.stop(); net = null
         RunState.set { it.copy(running = false, line = reason) }
         runCatching { wake?.takeIf { it.isHeld }?.release() }
         wake = null
@@ -160,6 +182,7 @@ class ReserveService : Service() {
 
     override fun onDestroy() {
         runCatching { wake?.takeIf { it.isHeld }?.release() }
+        net?.stop(); net = null
         scope.cancel()
         RunState.set { if (it.running) it.copy(running = false, line = RunState.R_STOPPED) else it }
         super.onDestroy()

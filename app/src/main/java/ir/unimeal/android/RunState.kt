@@ -34,6 +34,7 @@ object RunState {
     const val R_OVER = 11
     const val R_STOPPED = 12
     const val R_FAILED = 13
+    const val R_OFFLINE = 14
 
     private const val MAX_LINES = 400
     private val _s = MutableStateFlow(State())

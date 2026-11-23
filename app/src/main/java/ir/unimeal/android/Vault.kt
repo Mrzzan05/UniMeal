@@ -65,8 +65,22 @@ data class Settings(
     val waitNextWeek: Boolean = true,
     /** Most rials one run may spend per account, 0 = no limit. */
     val maxSpend: Long = 0L,
+    /** The account "Open SAMAD" signs in with. */
+    val defaultAccountId: String = "",
+    /** 0 = follow the system, 1 = light, 2 = dark. */
+    val theme: Int = 0,
+    val reminderOn: Boolean = false,
+    /** ISO day: 1 = Monday … 7 = Sunday. Wednesday by default. */
+    val reminderDay: Int = 3,
+    val reminderHour: Int = 20,
+    val reminderMinute: Int = 0,
+    /** Seconds between checks while waiting for a menu. */
+    val pollSeconds: Int = 60,
 ) {
     val usableAccounts: List<Account> get() = accounts.filter { it.usable }
+    val defaultAccount: Account?
+        get() = accounts.firstOrNull { it.id == defaultAccountId && it.username.isNotBlank() && it.password.isNotEmpty() }
+            ?: accounts.firstOrNull { it.username.isNotBlank() && it.password.isNotEmpty() }
     val meals: Set<Meal> get() = buildSet { if (lunch) add(Meal.LUNCH); if (dinner) add(Meal.DINNER) }
 }
 
@@ -89,6 +103,8 @@ class Vault(ctx: Context) {
             Settings(
                 list, j.optBoolean("l", true), j.optBoolean("d", true),
                 j.optString("s", "12"), j.optBoolean("pv", true), j.optBoolean("w", true), j.optLong("m", 0L),
+                j.optString("da"), j.optInt("th", 0), j.optBoolean("ro", false), j.optInt("rd", 3),
+                j.optInt("rh", 20), j.optInt("rm", 0), j.optInt("ps", 60),
             )
         }
     } catch (_: Exception) { Settings() }
@@ -99,6 +115,8 @@ class Vault(ctx: Context) {
             for (a in s.accounts) arr.put(JSONObject().put("i", a.id).put("n", a.label).put("u", a.username).put("p", a.password).put("e", a.enabled))
             val j = JSONObject().put("a", arr).put("l", s.lunch).put("d", s.dinner)
                 .put("s", s.selfId).put("pv", s.preview).put("w", s.waitNextWeek).put("m", s.maxSpend)
+                .put("da", s.defaultAccountId).put("th", s.theme).put("ro", s.reminderOn).put("rd", s.reminderDay)
+                .put("rh", s.reminderHour).put("rm", s.reminderMinute).put("ps", s.pollSeconds)
             val tmp = File(file.parentFile, "unimeal.tmp")
             tmp.writeBytes(Crypto.encrypt(j.toString().toByteArray(Charsets.UTF_8)))
             if (!tmp.renameTo(file)) { file.writeBytes(tmp.readBytes()); tmp.delete() }

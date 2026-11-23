@@ -87,6 +87,39 @@ class Runner(
         return SamadParser.parse(again) ?: throw Unexpected("reservation page not recognised")
     }
 
+    private class WrongSelf(val self: String, val credit: Long) : Exception()
+
+    /**
+     * Signs in (reusing a still-valid session) and returns the reservation page of the wanted self,
+     * switching the self like the drop-down on the website does.
+     */
+    private fun openReservePage(): ReservePage {
+        // The cookies of an earlier pass may still be valid (then the login page is not shown at all).
+        var page = try { reservePage().also { log("session still valid") } } catch (e: LoginFailed) {
+            login()
+            log("signed in")
+            reservePage()
+        }
+        log("page: self ${page.selfId}, credit ${page.credit}, ${page.rows.size} options")
+        if (page.selfId != selfId) {
+            if (page.selfOptions.none { it.first == selfId }) throw WrongSelf(page.selfId, page.credit)
+            log("switching self ${page.selfId} -> $selfId")
+            page = parseOrRefetch(http.post(Urls.RESERVE, SamadForm.build(page, "showPanel", selfId = selfId)))
+            if (page.selfId != selfId) throw WrongSelf(page.selfId, page.credit)
+            log("page: self ${page.selfId}, ${page.rows.size} options")
+        }
+        return page
+    }
+
+    /** Only signs in and selects the wanted self, so a browser session can be opened for the user. */
+    fun signIn(): Status = try {
+        openReservePage(); Status.OK
+    } catch (e: WrongSelf) { Status.OK }
+    catch (e: LoginFailed) { Status.LOGIN_FAILED }
+    catch (e: CertProblem) { Status.CERT_PROBLEM }
+    catch (e: NetProblem) { Status.NETWORK }
+    catch (e: Unexpected) { Status.UNEXPECTED }
+
     fun pass(): Outcome {
         val reserved = ArrayList<String>(); val would = ArrayList<String>(); val failed = ArrayList<String>()
         val poor = ArrayList<String>(); val over = ArrayList<String>(); val unavailable = ArrayList<String>()
@@ -96,23 +129,7 @@ class Runner(
         var published = 0
         var credit: Long? = null
         try {
-            // The cookies of an earlier pass may still be valid (then the login page is not shown at all).
-            var page = try { reservePage().also { log("session still valid") } } catch (e: LoginFailed) {
-                login()
-                log("signed in")
-                reservePage()
-            }
-            log("page: self ${page.selfId}, credit ${page.credit}, ${page.rows.size} options")
-            if (page.selfId != selfId) {
-                if (page.selfOptions.none { it.first == selfId }) {
-                    return Outcome(Status.WRONG_SELF, detail = page.selfId, credit = page.credit)
-                }
-                // Same as picking the self in the drop-down on the website.
-                log("switching self ${page.selfId} -> $selfId")
-                page = parseOrRefetch(http.post(Urls.RESERVE, SamadForm.build(page, "showPanel", selfId = selfId)))
-                if (page.selfId != selfId) return Outcome(Status.WRONG_SELF, detail = page.selfId, credit = page.credit)
-                log("page: self ${page.selfId}, ${page.rows.size} options")
-            }
+            var page = openReservePage()
             var spent = 0L
             for (week in 0 until maxWeeks) {
                 credit = page.credit
@@ -156,6 +173,8 @@ class Runner(
                 Status.OK, "", reserved, would, failed, poor.distinct(), over.distinct(), unavailable.distinct(),
                 already, waiting, published, credit, messages.distinct(),
             )
+        } catch (e: WrongSelf) {
+            return Outcome(Status.WRONG_SELF, detail = e.self, credit = e.credit)
         } catch (e: LoginFailed) {
             return Outcome(Status.LOGIN_FAILED)
         } catch (e: CertProblem) {
