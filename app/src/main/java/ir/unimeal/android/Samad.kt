@@ -207,7 +207,11 @@ object SamadForm {
     fun build(page: ReservePage, method: String, pick: Set<Int> = emptySet(), selfId: String? = null): List<Pair<String, String>> {
         val out = ArrayList<Pair<String, String>>()
         out += "weekStartDateTime" to page.weekStart
-        out += "remainCredit" to page.credit.toString()
+        // The website's script lowers this hidden field by the price of every newly ticked food, and the
+        // server rejects a confirm whose remaining credit does not match ("خطای اعتبار").
+        val free = page.extraFields.any { it.first == "freeRestaurant" && it.second == "true" }
+        val cost = if (free) 0L else page.rows.filter { it.index in pick && !it.taken }.sumOf { (it.price ?: 0L) * (it.count.toLongOrNull()?.coerceAtLeast(1L) ?: 1L) }
+        out += "remainCredit" to (page.credit - cost).toString()
         out += "method:$method" to "Submit"
         out += "_csrf" to page.csrf
         for ((n, v) in page.extraFields) out += n to (if (n == "selectedSelfDefId" && selfId != null) selfId else v)
@@ -216,7 +220,7 @@ object SamadForm {
             val p = "userWeekReserves[${r.index}]."
             if (on) {
                 out += p + "selected" to "true"
-                out += p + "selectedCount" to r.count.ifBlank { "1" }
+                out += p + "selectedCount" to (r.count.toLongOrNull()?.coerceAtLeast(1L) ?: 1L).toString()
             }
             out += p + "id" to (if (r.saved) r.reservedId else "")
             out += p + "programId" to r.programId

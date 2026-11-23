@@ -74,6 +74,10 @@ class SamadTest {
         assertEquals("true", body.first { it.first == "userWeekReserves[3].selected" }.second)
         assertEquals("9607416", body.first { it.first == "userWeekReserves[4].id" }.second)
         assertEquals("12", body.first { it.first == "selectedSelfDefId" }.second)
+        // Ticking a 250,000 dinner lowers the remaining credit by that price, like the website does.
+        assertEquals((page.credit - 250_000L).toString(), body.first { it.first == "remainCredit" }.second)
+        // Without a new tick nothing changes.
+        assertEquals(page.credit.toString(), SamadForm.build(page, "showNextWeek").first { it.first == "remainCredit" }.second)
     }
 
     @Test fun untouchedRowsAreNeverUnticked() {

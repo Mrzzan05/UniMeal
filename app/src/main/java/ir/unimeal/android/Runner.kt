@@ -96,9 +96,12 @@ class Runner(
         var published = 0
         var credit: Long? = null
         try {
-            login()
-            log("signed in")
-            var page = reservePage()
+            // The cookies of an earlier pass may still be valid (then the login page is not shown at all).
+            var page = try { reservePage().also { log("session still valid") } } catch (e: LoginFailed) {
+                login()
+                log("signed in")
+                reservePage()
+            }
             log("page: self ${page.selfId}, credit ${page.credit}, ${page.rows.size} options")
             if (page.selfId != selfId) {
                 if (page.selfOptions.none { it.first == selfId }) {

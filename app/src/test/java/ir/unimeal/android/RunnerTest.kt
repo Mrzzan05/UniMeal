@@ -87,6 +87,13 @@ class RunnerTest {
         assertEquals(Status.LOGIN_FAILED, runner(h, false).pass().status)
     }
 
+    @Test fun anExistingSessionIsReusedWithoutLoggingInAgain() {
+        val h = Fake(full, full)
+        runner(h, false).pass()
+        runner(h, false).pass()
+        assertTrue(h.posts.none { it.first == Urls.LOGIN_POST })
+    }
+
     @Test fun badCertificateStops() {
         val h = Fake(full, full).also { it.cert = true }
         assertEquals(Status.CERT_PROBLEM, runner(h, false).pass().status)
