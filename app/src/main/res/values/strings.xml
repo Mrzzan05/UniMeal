@@ -138,4 +138,13 @@
     <string name="web_signing">Signing in to SAMAD…</string>
     <string name="web_failed">Could not sign in to SAMAD. Check your connection.</string>
     <string name="web_no_account">Add and save an account first.</string>
+    <string name="about_author">By %1$s</string>
+    <string name="about_github">Open the project on GitHub</string>
+    <string name="upd_check">Check for update</string>
+    <string name="upd_checking">Checking…</string>
+    <string name="upd_up_to_date">You have the latest version (%1$s).</string>
+    <string name="upd_available">New version %1$s is available.</string>
+    <string name="upd_failed">Could not check: %1$s</string>
+    <string name="upd_download">Download %1$s</string>
+    <string name="upd_notes">Release notes</string>
 </resources>

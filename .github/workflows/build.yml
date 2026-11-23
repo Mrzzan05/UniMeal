@@ -50,7 +50,7 @@ jobs:
         if: steps.key.outputs.signed != 'true'
         run: gradle :app:assembleDebug --no-daemon
 
-      - name: Collect APK
+      - name: Collect APK and release notes
         run: |
           mkdir -p dist
           if [ "${{ steps.key.outputs.signed }}" = "true" ]; then
@@ -59,11 +59,30 @@ jobs:
             cp app/build/outputs/apk/debug/app-debug.apk "dist/UniMeal-${GITHUB_REF_NAME}-debug.apk"
           fi
           (cd dist && sha256sum *.apk > SHA256SUMS.txt)
+          # Release notes = the matching CHANGELOG section.
+          VER="${GITHUB_REF_NAME#v}"
+          awk -v v="## $VER" '$0==v{f=1;next} /^## /{f=0} f' CHANGELOG.md > notes.md
+          if [ ! -s notes.md ]; then echo "See CHANGELOG.md" > notes.md; fi
+          {
+            echo
+            echo "---"
+            echo "SHA-256 of the APK:"
+            echo '```'
+            cat dist/SHA256SUMS.txt
+            echo '```'
+          } >> notes.md
+          ls -l dist
 
       - uses: actions/upload-artifact@v4
         with:
           name: UniMeal-apk
           path: dist/
+
+      - name: Tag without a release key
+        if: startsWith(github.ref, 'refs/tags/v') && steps.key.outputs.signed != 'true'
+        run: |
+          echo "::error::Tag pushed but the signing secrets are missing, so no release was published. Run tools/setup-signing.ps1 once, then re-push the tag."
+          exit 1
 
       # Only a properly signed build is ever published as a release.
       - name: Publish release
@@ -71,4 +90,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: dist/*
-          generate_release_notes: true
+          body_path: notes.md
+          name: UniMeal ${{ github.ref_name }}

@@ -5,6 +5,10 @@ import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.animation.core.animateIntAsState
+import androidx.compose.animation.core.StartOffset
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -103,15 +107,29 @@ private fun heroIcon(line: Int, running: Boolean): ImageVector = when {
 }
 
 @Composable
-private fun Pulse(active: Boolean, icon: ImageVector) {
+private fun Pulse(active: Boolean, icon: ImageVector, problem: Boolean, line: Int) {
     val t = rememberInfiniteTransition(label = "pulse")
-    val scale by t.animateFloat(
-        1f, 1.4f, infiniteRepeatable(tween(1000, easing = FastOutSlowInEasing), RepeatMode.Reverse), label = "scale",
+    val ring1 by t.animateFloat(
+        0f, 1f, infiniteRepeatable(tween(1800, easing = FastOutSlowInEasing)), label = "ring1",
     )
-    Box(Modifier.size(76.dp), contentAlignment = Alignment.Center) {
-        if (active) Box(Modifier.size(56.dp).scale(scale).clip(CircleShape).background(Color.White.copy(alpha = 0.18f)))
-        Box(Modifier.size(56.dp).clip(CircleShape).background(Color.White.copy(alpha = 0.25f)), contentAlignment = Alignment.Center) {
-            Icon(icon, null, tint = Color.White, modifier = Modifier.size(30.dp))
+    val ring2 by t.animateFloat(
+        0f, 1f, infiniteRepeatable(tween(1800, easing = FastOutSlowInEasing), initialStartOffset = StartOffset(900)), label = "ring2",
+    )
+    val pop = rememberPop(icon)
+    val shake = rememberShake(problem)
+    val spin = rememberSpin(active && icon == Icons.Filled.Refresh)
+    Box(Modifier.size(96.dp).graphicsLayer { translationX = shake.dp.toPx() }, contentAlignment = Alignment.Center) {
+        if (active) {
+            for (r in listOf(ring1, ring2)) {
+                Box(Modifier.size(56.dp).graphicsLayer { scaleX = 1f + r * 0.7f; scaleY = 1f + r * 0.7f; alpha = (1f - r) * 0.35f }
+                    .clip(CircleShape).background(Color.White))
+            }
+        }
+        Box(
+            Modifier.size(60.dp).graphicsLayer { scaleX = pop; scaleY = pop }.clip(CircleShape).background(Color.White.copy(alpha = 0.25f)),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(icon, null, tint = Color.White, modifier = Modifier.size(32.dp).graphicsLayer { rotationZ = spin })
         }
     }
 }
@@ -138,27 +156,33 @@ fun HomeScreen(s: Settings, persist: (Settings) -> Unit, goAccounts: () -> Unit)
     ) {
         Box(
             Modifier.fillMaxWidth().clip(RoundedCornerShape(30.dp))
-                .background(Brush.verticalGradient(listOf(base, base.copy(alpha = 0.78f)))).animateContentSize(),
+                .background(Brush.verticalGradient(listOf(base, base.copy(alpha = 0.78f)))).animateContentSize().enter(0),
         ) {
+            Confetti(st.line == RunState.R_DONE, Modifier.matchParentSize())
             Column(Modifier.padding(22.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                Pulse(st.running, heroIcon(st.line, st.running))
+                Pulse(st.running, heroIcon(st.line, st.running), isProblem(st.line) || st.line == RunState.R_OFFLINE, st.line)
                 Text(
                     stringResource(statusText(st.line)), color = Color.White, fontSize = 19.sp,
                     fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center,
                 )
-                st.credit?.let { Text(stringResource(R.string.credit, "%,d".format(it)), color = Color.White.copy(alpha = 0.8f), fontSize = 14.sp) }
+                st.credit?.let { c ->
+                    val shown by animateIntAsState(c.toInt().coerceAtLeast(0), tween(900), label = "credit")
+                    Text(stringResource(R.string.credit, "%,d".format(shown)), color = Color.White.copy(alpha = 0.8f), fontSize = 14.sp) }
                 Spacer(Modifier.height(4.dp))
                 val btn = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = base)
                 if (st.running) {
-                    Button({ ReserveService.stop(ctx) }, Modifier.fillMaxWidth().height(56.dp), colors = btn) {
+                    val src = remember { MutableInteractionSource() }; val sc = rememberPressScale(src)
+                    Button({ ReserveService.stop(ctx) }, Modifier.fillMaxWidth().height(56.dp).scale(sc), colors = btn, interactionSource = src) {
                         Icon(Icons.Filled.Close, null); Text(stringResource(R.string.stop), Modifier.padding(start = 8.dp), fontSize = 18.sp)
                     }
                 } else if (s.usableAccounts.isEmpty()) {
-                    Button(goAccounts, Modifier.fillMaxWidth().height(56.dp), colors = btn) {
+                    val src = remember { MutableInteractionSource() }; val sc = rememberPressScale(src)
+                    Button(goAccounts, Modifier.fillMaxWidth().height(56.dp).scale(sc), colors = btn, interactionSource = src) {
                         Text(stringResource(R.string.add_account), fontSize = 18.sp)
                     }
                 } else {
-                    Button({ start() }, Modifier.fillMaxWidth().height(56.dp), enabled = s.lunch || s.dinner, colors = btn) {
+                    val src = remember { MutableInteractionSource() }; val sc = rememberPressScale(src)
+                    Button({ start() }, Modifier.fillMaxWidth().height(56.dp).scale(sc), enabled = s.lunch || s.dinner, colors = btn, interactionSource = src) {
                         Icon(Icons.Filled.PlayArrow, null)
                         Text(stringResource(if (s.preview) R.string.start_preview else R.string.start), Modifier.padding(start = 8.dp), fontSize = 18.sp)
                     }
@@ -168,7 +192,7 @@ fun HomeScreen(s: Settings, persist: (Settings) -> Unit, goAccounts: () -> Unit)
 
         FilledTonalButton(
             { ctx.startActivity(SamadActivity.intent(ctx, s.defaultAccount?.id)) },
-            Modifier.fillMaxWidth().height(48.dp),
+            Modifier.fillMaxWidth().height(48.dp).enter(1),
         ) { Text(stringResource(R.string.open_samad)) }
 
         AnimatedVisibility(!st.running && st.wouldReserve.isNotEmpty()) {
@@ -187,7 +211,7 @@ fun HomeScreen(s: Settings, persist: (Settings) -> Unit, goAccounts: () -> Unit)
             }
         }
 
-        Section(stringResource(R.string.meals)) {
+        Section(stringResource(R.string.meals), Modifier.enter(2)) {
             ToggleRow(stringResource(R.string.lunch), null, s.lunch, !st.running) { persist(s.copy(lunch = it)) }
             ToggleRow(stringResource(R.string.dinner), null, s.dinner, !st.running) { persist(s.copy(dinner = it)) }
             ToggleRow(stringResource(R.string.wait_next), stringResource(R.string.wait_next_hint), s.waitNextWeek, !st.running) { persist(s.copy(waitNextWeek = it)) }

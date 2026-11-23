@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -71,11 +72,13 @@ private fun Shell(s: Settings, persist: (Settings) -> Unit) {
         )
         // Swiping the page changes the tab; every page keeps its own scroll.
         HorizontalPager(pager, Modifier.weight(1f).fillMaxWidth()) { page ->
+            Box(Modifier.pagerParallax(pager, page)) {
             when (page) {
                 0 -> HomeScreen(s, persist) { go(1) }
                 1 -> AccountsScreen(s, edit, { edit = it }, shown, { shown = it }, persist)
                 2 -> LogScreen()
                 else -> SettingsScreen(s, persist)
+            }
             }
         }
         NavigationBar {

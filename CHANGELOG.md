@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0
+- Settings → About: link to the project on GitHub and a "Check for update" button (asks GitHub only when tapped; opens the release page or APK).
+- Signed, shrunk release APK published on GitHub Releases with checksums (`tools/setup-signing.ps1` sets up the key once).
+- Livelier interface: staggered card entrance, pulsing rings and a spinning icon while checking, spring pop on done with confetti, shake on errors, count-up credit, button press bounce and softer page swipes.
+- New README (English and Persian) and SECURITY.md.
+
 ## 0.3.0
 - New look: gradient status card with animation, bottom navigation, smoother transitions; swipe between pages.
 - Dark theme (follows the system, or choose Light/Dark).

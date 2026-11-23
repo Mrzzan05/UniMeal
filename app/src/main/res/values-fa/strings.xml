@@ -138,4 +138,13 @@
     <string name="web_signing">در حال ورود به سامد…</string>
     <string name="web_failed">ورود به سامد انجام نشد. اتصال را بررسی کن.</string>
     <string name="web_no_account">اول یک حساب اضافه و ذخیره کن.</string>
+    <string name="about_author">ساخته‌ی %1$s</string>
+    <string name="about_github">باز کردن پروژه در GitHub</string>
+    <string name="upd_check">بررسی نسخه‌ی جدید</string>
+    <string name="upd_checking">در حال بررسی…</string>
+    <string name="upd_up_to_date">آخرین نسخه را دارید (%1$s).</string>
+    <string name="upd_available">نسخه‌ی جدید %1$s موجود است.</string>
+    <string name="upd_failed">بررسی نشد: %1$s</string>
+    <string name="upd_download">دانلود %1$s</string>
+    <string name="upd_notes">یادداشت‌های نسخه</string>
 </resources>
