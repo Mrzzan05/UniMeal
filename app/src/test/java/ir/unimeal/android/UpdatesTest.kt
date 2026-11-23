@@ -16,16 +16,16 @@ class UpdatesTest {
         assertFalse(Versions.isNewer("v0.2.9", "0.3.0"))
     }
 
-    private val sample = """{"url":"x","html_url":"https:\/\/github.com\/Mrzzan05\/UniMeal-Android\/releases\/tag\/v0.4.0",
+    private val sample = """{"url":"x","html_url":"https:\/\/github.com\/Mrzzan05\/UniMeal\/releases\/tag\/v0.4.0",
         "tag_name":"v0.4.0","assets":[
-        {"name":"SHA256SUMS.txt","browser_download_url":"https://github.com/Mrzzan05/UniMeal-Android/releases/download/v0.4.0/SHA256SUMS.txt"},
-        {"name":"UniMeal-v0.4.0.apk","browser_download_url":"https://github.com/Mrzzan05/UniMeal-Android/releases/download/v0.4.0/UniMeal-v0.4.0.apk"}]}"""
+        {"name":"SHA256SUMS.txt","browser_download_url":"https://github.com/Mrzzan05/UniMeal/releases/download/v0.4.0/SHA256SUMS.txt"},
+        {"name":"UniMeal-v0.4.0.apk","browser_download_url":"https://github.com/Mrzzan05/UniMeal/releases/download/v0.4.0/UniMeal-v0.4.0.apk"}]}"""
 
     @Test fun parsesTheLatestRelease() {
         val r = assertNotNull(UpdateParse.latest(sample))
         assertEquals("v0.4.0", r.tag)
-        assertEquals("https://github.com/Mrzzan05/UniMeal-Android/releases/tag/v0.4.0", r.pageUrl)
-        assertEquals("https://github.com/Mrzzan05/UniMeal-Android/releases/download/v0.4.0/UniMeal-v0.4.0.apk", r.apkUrl)
+        assertEquals("https://github.com/Mrzzan05/UniMeal/releases/tag/v0.4.0", r.pageUrl)
+        assertEquals("https://github.com/Mrzzan05/UniMeal/releases/download/v0.4.0/UniMeal-v0.4.0.apk", r.apkUrl)
     }
 
     @Test fun neverOpensForeignLinks() {

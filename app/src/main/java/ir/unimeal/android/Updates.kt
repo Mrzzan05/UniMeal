@@ -18,8 +18,8 @@ object Versions {
 
 object Repo {
     const val OWNER = "Mrzzan05"
-    const val URL = "https://github.com/Mrzzan05/UniMeal-Android"
-    const val API_LATEST = "https://api.github.com/repos/Mrzzan05/UniMeal-Android/releases/latest"
+    const val URL = "https://github.com/Mrzzan05/UniMeal"
+    const val API_LATEST = "https://api.github.com/repos/Mrzzan05/UniMeal/releases/latest"
 
     /** Only pages of this project's own repository are ever opened. */
     fun safe(url: String?, fallback: String = "$URL/releases"): String =

@@ -4,7 +4,7 @@
 
 **دیگر رزرو غذا را فراموش نکنید: UniMeal ناهار و شام شما را در سماد رزرو می‌کند.**
 
-[دانلود آخرین APK](https://github.com/Mrzzan05/UniMeal-Android/releases/latest) · [English](README.md) · [تغییرات](CHANGELOG.md) · [امنیت](SECURITY.md)
+[دانلود آخرین APK](https://github.com/Mrzzan05/UniMeal/releases/latest) · [English](README.md) · [تغییرات](CHANGELOG.md) · [امنیت](SECURITY.md)
 
 </div>
 
@@ -25,7 +25,7 @@
 
 ## نصب
 
-1. فایل `UniMeal-vX.Y.Z.apk` را از [آخرین نسخه](https://github.com/Mrzzan05/UniMeal-Android/releases/latest) دانلود کنید.
+1. فایل `UniMeal-vX.Y.Z.apk` را از [آخرین نسخه](https://github.com/Mrzzan05/UniMeal/releases/latest) دانلود کنید.
 2. بازش کنید و اگر اندروید خواست، اجازه‌ی نصب بدهید.
 3. برنامه ← **حساب‌ها** ← شماره‌ی دانشجویی و رمز ← **ذخیره**.
 4. در **خانه** «شروع» را بزنید؛ وقتی از فهرست راضی بودید «فقط پیش‌نمایش» را خاموش کنید.

@@ -4,12 +4,12 @@
 
 **Never miss a meal reservation: UniMeal reserves your lunch and dinner on SAMAD for you.**
 
-[![Build](https://github.com/Mrzzan05/UniMeal-Android/actions/workflows/build.yml/badge.svg)](https://github.com/Mrzzan05/UniMeal-Android/actions/workflows/build.yml)
-[![Release](https://img.shields.io/github/v/release/Mrzzan05/UniMeal-Android)](https://github.com/Mrzzan05/UniMeal-Android/releases/latest)
+[![Build](https://github.com/Mrzzan05/UniMeal/actions/workflows/build.yml/badge.svg)](https://github.com/Mrzzan05/UniMeal/actions/workflows/build.yml)
+[![Release](https://img.shields.io/github/v/release/Mrzzan05/UniMeal)](https://github.com/Mrzzan05/UniMeal/releases/latest)
 ![Platform](https://img.shields.io/badge/platform-Android%208.0%2B-3DDC84?logo=android&logoColor=white)
 ![Kotlin](https://img.shields.io/badge/Kotlin-Jetpack%20Compose-7F52FF?logo=kotlin&logoColor=white)
 
-[**Download the latest APK**](https://github.com/Mrzzan05/UniMeal-Android/releases/latest) · [فارسی](README_FA.md) · [Changelog](CHANGELOG.md) · [Security](SECURITY.md)
+[**Download the latest APK**](https://github.com/Mrzzan05/UniMeal/releases/latest) · [فارسی](README_FA.md) · [Changelog](CHANGELOG.md) · [Security](SECURITY.md)
 
 <img src="docs/showcase.png" alt="UniMeal screens (illustrative, sample data)" width="900">
 
@@ -37,7 +37,7 @@ You press **Start**. UniMeal signs in to SAMAD (University of Urmia), reads the 
 
 ## Install
 
-1. Download `UniMeal-vX.Y.Z.apk` from the [latest release](https://github.com/Mrzzan05/UniMeal-Android/releases/latest).
+1. Download `UniMeal-vX.Y.Z.apk` from the [latest release](https://github.com/Mrzzan05/UniMeal/releases/latest).
 2. Open it and allow installing from your browser or file manager when Android asks.
 3. Open UniMeal → **Accounts** → add your student number and password → **Save**.
 4. Go to **Home** and press **Start**. Turn *Preview only* off when you are happy with what it lists.

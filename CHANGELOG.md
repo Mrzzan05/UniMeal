@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1
+- Fix: the GitHub link and update check pointed to a wrong repository name; they now use Mrzzan05/UniMeal.
+- The signing script now uses the repository of the current folder.
+
 ## 0.4.0
 - Settings → About: link to the project on GitHub and a "Check for update" button (asks GitHub only when tapped; opens the release page or APK).
 - Signed, shrunk release APK published on GitHub Releases with checksums (`tools/setup-signing.ps1` sets up the key once).

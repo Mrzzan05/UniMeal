@@ -2,11 +2,13 @@
 # Needs: Java (keytool) and GitHub CLI (gh, already logged in: `gh auth login`).
 # Run from the repository folder:  powershell -ExecutionPolicy Bypass -File tools\setup-signing.ps1
 $ErrorActionPreference = "Stop"
-$repo  = "Mrzzan05/UniMeal-Android"
+$repo  = (gh repo view --json nameWithOwner --jq .nameWithOwner)  # the repo of the current folder
 $alias = "unimeal"
 $jks   = Join-Path $HOME "unimeal-release.jks"
 
 if (Test-Path $jks) { throw "$jks already exists. Keep using it (do NOT create a new key: updates would fail to install)." }
+if (-not $repo) { throw "Run this inside the cloned repository folder (gh could not find the repo)." }
+Write-Host "Repository: $repo"
 foreach ($c in "keytool","gh") { if (-not (Get-Command $c -ErrorAction SilentlyContinue)) { throw "$c not found in PATH" } }
 
 function New-Pass {

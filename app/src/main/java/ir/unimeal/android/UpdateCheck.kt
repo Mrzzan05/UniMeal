@@ -28,7 +28,7 @@ object UpdateCheck {
         try {
             val req = Request.Builder().url(Repo.API_LATEST)
                 .header("Accept", "application/vnd.github+json")
-                .header("User-Agent", "UniMeal-Android/$current").build()
+                .header("User-Agent", "UniMeal/$current").build()
             client.newCall(req).execute().use { resp ->
                 if (resp.code == 404) return@withContext Result.Failed("No release yet")
                 if (!resp.isSuccessful) return@withContext Result.Failed("HTTP ${resp.code}")
